@@ -1,0 +1,56 @@
+{
+	"name": "cyberpunk-character-console-project",
+	"version": "1.0.0",
+	"description": "Cyberpunk Character Console Project",
+	"main": "webpack.common.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"webpack-prod-analyze": "webpack --config webpack.production.js --profile --json > dist/stats.json && webpack-bundle-analyzer dist/stats.json",
+		"webpack-prod": "webpack --config webpack.production.js",
+		"webpack-dev": "webpack --config webpack.development.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Snowcart/cyberpunk-character-console-project.git"
+	},
+	"author": "Snowcart",
+	"contributors": [
+		{
+			"name": "Andrew Busch",
+			"url": "https://github.com/andrewbusch7"
+		}
+	],
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Snowcart/cyberpunk-character-console-project/issues"
+	},
+	"homepage": "https://github.com/Snowcart/cyberpunk-character-console-project#readme",
+	"devDependencies": {
+		"prettier": "^2.0.5",
+		"webpack-bundle-analyzer": "^3.8.0"
+	},
+	"dependencies": {
+		"@types/history": "^4.7.6",
+		"@types/react-dom": "^16.9.8",
+		"@types/react-router": "^5.1.7",
+		"@types/react-router-dom": "^5.1.5",
+		"css-loader": "^3.5.3",
+		"file-loader": "^6.0.0",
+		"fork-ts-checker-webpack-plugin": "^4.1.4",
+		"history": "^4.10.1",
+		"html-webpack-harddisk-plugin": "^1.0.1",
+		"html-webpack-plugin": "^4.3.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-jss": "^10.1.1",
+		"react-router": "^5.2.0",
+		"react-router-dom": "^5.2.0",
+		"ts-loader": "^7.0.4",
+		"typescript": "^3.9.3",
+		"use-react-router": "^1.0.7",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.11",
+		"webpack-dev-server": "^3.11.0",
+		"webpack-merge": "^4.2.2"
+	}
+}

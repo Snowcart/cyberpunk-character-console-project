@@ -1,0 +1,38 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dev",
+      "program": "${workspaceFolder}/app/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "args": ["--config", "app/webpack.development.js"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "autoAttachChildProcesses": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dev-fast",
+      "program": "${workspaceFolder}/app/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "args": ["--config", "app/webpack.development-fast.js"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "autoAttachChildProcesses": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "dev-fast-debug",
+      "program": "${workspaceFolder}/app/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "args": ["--config", "app/webpack.development-fast.js"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "autoAttachChildProcesses": true
+    }
+  ]
+}
