@@ -1,9 +1,9 @@
-import skills from './skills';
 import Stats from './stats';
 import Cybernetics from './cybernetics';
 import Armor from './armor';
 import Roles from './roles';
 import Weapon from './weapon';
+import InventoryRecord from './gear';
 
 export default class Character {
 	name: string;
@@ -76,16 +76,9 @@ export default class Character {
 
 	inventory: {
 		cybernetics: Cybernetics[];
-
 		armor: Armor[];
-
 		weapons: Weapon[];
-
-		gear: {
-			name: string;
-			count: number;
-			cost: number;
-		}[];
+		gear: InventoryRecord[];
 	};
 
 	//Lifepath

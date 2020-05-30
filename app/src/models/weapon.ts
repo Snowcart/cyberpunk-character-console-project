@@ -1,5 +1,6 @@
-export default interface Weapon {
-	name: string;
+import Item from './item';
+
+export default interface Weapon extends Item {
 	type: 'Pistol' | 'SMG' | 'Rifle' | 'Shotgun' | 'Heavy' | 'Melee' | 'Exotic';
 	damage: string;
 	range: number;
@@ -10,7 +11,6 @@ export default interface Weapon {
 	concealability: 'Jacket' | 'Pocket' | 'None' | 'NA';
 	accuracy: number;
 	reliablility: 'VR' | 'ST' | 'UR';
-	cost: number;
 	armorPeircing?: string; // Todo: string literal of AP types
 	isSmartgun?: boolean;
 	equipped: boolean;

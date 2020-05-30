@@ -1,10 +1,9 @@
+import Item from './item';
 import skills from './skills';
 import Stats from './stats';
 
-export default interface Cybernetics {
-	name: string;
+export default interface Cybernetics extends Item {
 	humanityLoss: number; //This changes in db list for dice rolls
-	details: string;
 	equipped: boolean;
 	adjustments?: [
 		{
