@@ -22,16 +22,18 @@ export default () => {
 			<GlobalStyle />
 			<characterContext.Provider value={character}>
 				<Title />
-				<div>
-					<div>
-						<Stats />
+				<div style={{ display: 'grid', border: '1px solid blue', gridColumnStart: 1 }}>
+					<div style={{ border: '1px solid blue' }}>
+						<div style={{ border: '1px solid blue' }}>
+							<Stats />
+						</div>
+						<div style={{ border: '1px solid blue' }}>{/* Save / BTM */}</div>
 					</div>
-					<div>{/* Save / BTM */}</div>
+					<div style={{ border: '1px solid blue' }}>{/* Actions */}</div>
+					<div style={{ border: '1px solid blue' }}>{/* Inventory */}</div>
+					<div style={{ border: '1px solid blue' }}>{/* Cybernetics */}</div>
+					<div style={{ border: '1px solid blue' }}>{/* Stats */}</div>
 				</div>
-				<div>{/* Actions */}</div>
-				<div>{/* Inventory */}</div>
-				<div>{/* Cybernetics */}</div>
-				<div>{/* Stats */}</div>
 			</characterContext.Provider>
 		</>
 	);
