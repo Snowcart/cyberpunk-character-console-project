@@ -1,5 +1,5 @@
 export default interface Stats {
-	inteligence: number;
+	intelligence: number;
 	reflex: number;
 	tech: number;
 	cool: number;

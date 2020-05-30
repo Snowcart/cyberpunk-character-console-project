@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import Title from './title/Title';
 import { useCharacter } from './hooks/useCharacter';
 import { characterContext } from './context/CharacterContext';
+import Stats from './stats/Stats';
 
 export default () => <App />;
 
@@ -21,6 +22,7 @@ const App = () => {
 			<GlobalStyle />
 			<characterContext.Provider value={character}>
 				<Title />
+				<Stats />
 			</characterContext.Provider>
 		</>
 	);

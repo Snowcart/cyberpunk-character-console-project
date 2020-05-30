@@ -7,6 +7,7 @@ var player: {
 	hasSmartGunLink: boolean;
 	hasCyberneticsAffectingAttack: boolean;
 };
+
 var attackModifier = 0;
 var roundUp = (input: number) => input;
 
