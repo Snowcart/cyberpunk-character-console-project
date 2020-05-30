@@ -4,9 +4,9 @@ export default interface Armor {
 	stoppingPower: number;
 	encumberanceValue: number;
 	cost: number;
-	head: boolean;
-	torso: boolean;
-	arms: boolean;
-	legs: boolean;
+	head?: boolean;
+	torso?: boolean;
+	arms?: boolean;
+	legs?: boolean;
 	equipped: boolean;
 }
