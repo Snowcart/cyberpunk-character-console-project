@@ -1,33 +1,37 @@
 import * as React from 'react';
 import { characterContext } from '../context/CharacterContext';
 import styled from 'styled-components';
+import Character from 'src/models/Character';
 
 const Title = () => {
 	const characterCtx = React.useContext(characterContext);
 
-	const onEditButtonClick = () => {
-		characterCtx.toggleEditable(characterCtx.editable);
+	const onCloseButtonClick = () => {
+		if (confirm('This will remove your loaded data, are you sure you want to continue?')) {
+			characterCtx.setCharacter({} as Character);
+		}
 	};
 
-	const onHeadingValueChange = (e: any, name: string) => {
-		characterCtx.setCharacter({ ...characterCtx.character });
-	};
+	const onEditButtonClick = () => characterCtx.toggleEditable(characterCtx.editable);
+
+	const onHeadingValueChange = (e: any, key: string) =>
+		characterCtx.setCharacter({ ...characterCtx.character, [key]: e.target.value });
 
 	const fields = (
 		<>
 			<Heading>HANDLE: </Heading>
-			<BoldHeading>{characterCtx.character.name}</BoldHeading>
+			<BoldHeading>{characterCtx.character?.name}</BoldHeading>
 			<Heading>ROLE: </Heading>
-			<BoldHeading>{characterCtx.character.role}</BoldHeading>
+			<BoldHeading>{characterCtx.character?.role}</BoldHeading>
 		</>
 	);
 
 	const editableFields = (
 		<>
 			<Heading>HANDLE: </Heading>
-			<Input value={characterCtx.character.name} onChange={(e) => onHeadingValueChange(e, 'name')} />
+			<Input value={characterCtx.character?.name} onChange={(e) => onHeadingValueChange(e, 'name')} />
 			<Heading>ROLE: </Heading>
-			<Input value={characterCtx.character.role} onChange={(e) => onHeadingValueChange(e, 'role')} />
+			<Input value={characterCtx.character?.role} onChange={(e) => onHeadingValueChange(e, 'role')} />
 		</>
 	);
 
@@ -35,9 +39,10 @@ const Title = () => {
 		<TitleBar>
 			<Heading> CCCP </Heading>
 			{characterCtx.editable ? editableFields : fields}
-			<Button onClick={() => onEditButtonClick()}>{characterCtx.editable ? 'Finish' : 'Edit'}</Button>
-			<Button>Import</Button>
+			<Button onClick={onCloseButtonClick}>Close</Button>
 			<Button>Export</Button>
+			<Button>Import</Button>
+			<Button onClick={onEditButtonClick}>{characterCtx.editable ? 'Finish' : 'Edit'}</Button>
 		</TitleBar>
 	);
 

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import Character from './models/Character';
+import { createGlobalStyle } from 'styled-components';
 import Title from './title/Title';
 import { useCharacter } from './hooks/useCharacter';
 import { characterContext } from './context/CharacterContext';
@@ -23,7 +22,6 @@ const App = () => {
 			<characterContext.Provider value={character}>
 				<Title />
 			</characterContext.Provider>
-			<h1>Hello worlds</h1>
 		</>
 	);
 };
