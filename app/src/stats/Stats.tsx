@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const Stats = () => {
 	const characterCtx = React.useContext(characterContext);
-	let stats: Stats = characterCtx.character ? characterCtx.character.stats : ({} as Stats);
+	let stats: Stats = characterCtx.character?.stats ?? ({} as Stats);
 
 	if (!stats.intelligence) {
 		stats.intelligence = 9;
