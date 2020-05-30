@@ -67,7 +67,7 @@ export default Title;
 
 const TitleBar = styled.div`
 	width: 100%;
-	height: 100px;
+	height: 60px;
 	border-bottom: 2px solid #00ccff;
 	box-shadow: 2px 2px #00ffff;
 `;
@@ -84,7 +84,7 @@ const Heading = styled.h1`
 	margin-left: 40px;
 	height: 100%;
 	vertical-align: middle;
-	font-size: 42px;
+	font-size: 24px;
 	font-weight: normal;
 	max-width: 25%;
 	white-space: nowrap;
