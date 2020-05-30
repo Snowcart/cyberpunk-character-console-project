@@ -2,6 +2,7 @@ import { characterContext } from '../context/CharacterContext';
 import * as React from 'react';
 import Stats from '../models/stats';
 import styled from 'styled-components';
+import Stat from './Stat';
 
 const Stats = () => {
 	const characterCtx = React.useContext(characterContext);
@@ -19,16 +20,6 @@ const Stats = () => {
 		stats.tech = 9;
 	}
 
-	const stat = (title: string, number: number, split?: boolean, calculated?: number) => {
-		return (
-			<div key={title}>
-				<h3>
-					{title} [ {!split ? number : `${number} / ${calculated}`} ]
-				</h3>
-			</div>
-		);
-	};
-
 	const createStatTable = () => {
 		const statArray: StatView[] = [
 			{ title: 'INT', value: stats.intelligence },
@@ -43,7 +34,7 @@ const Stats = () => {
 		];
 
 		return statArray.map((x) => {
-			return stat(x.title, x.value);
+			return <Stat title={x.title} number={x.value} />;
 		});
 	};
 
