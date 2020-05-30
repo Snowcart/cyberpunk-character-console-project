@@ -1,10 +1,14 @@
 import skills from './skills';
 import Stats from './stats';
+import Cybernetics from './cybernetics';
+import Armor from './armor';
+import Roles from './roles';
 
 export default interface Character {
 	name: string;
 	role: Roles;
 	characterPoints: number;
+	reputation: number;
 
 	stats: Stats;
 	//// Calced
@@ -13,6 +17,7 @@ export default interface Character {
 	//Lift
 	//Save
 	//BTM
+	//Humanity
 
 	wounds: number;
 	currentWoundType: number; //1-8? light -> mortal 6
@@ -26,10 +31,32 @@ export default interface Character {
 	// Todo: figure out custom languages or expert x or martial arts
 	// Todo: figure out complete custom skill
 
-	inventory: {
-		cybernetics: {};
+	currentArmor: {
+		//Sp calculated
+		head: {
+			damage: number;
+		};
+		torso: {
+			damage: number;
+		};
+		rightArm: {
+			damage: number;
+		};
+		leftArm: {
+			damage: number;
+		};
+		rightLeg: {
+			damage: number;
+		};
+		leftLeg: {
+			damage: number;
+		};
+	};
 
-		armor: [];
+	inventory: {
+		cyberwear: Cybernetics[];
+
+		armor: Armor[];
 
 		weapons: Weapon[];
 
@@ -40,35 +67,22 @@ export default interface Character {
 			}
 		];
 	};
+
+	//Lifepath
+	style: {
+		clothes: string;
+		hair: string;
+		affectations: string;
+		ethnicity: string;
+		language: string;
+	};
+	motivations: {
+		traits: string;
+		valuedPerson: string;
+		valueMost: string;
+		valuedPossession: string;
+		attitude: string;
+	};
+
+	lifeDetails: string;
 }
-
-interface Weapon {
-	name: string;
-	type: 'Pistol' | 'SMG' | 'Rifle' | 'Shotgun' | 'Heavy' | 'Melee' | 'Exotic';
-	damage: string;
-	range: number;
-	ROF: number;
-	shots: number;
-	clip: number;
-	ammo: string;
-	concealability: 'Jacket' | 'Pocket' | 'None' | 'NA';
-	accuracy: number;
-	reliablility: 'VR' | 'ST' | 'UR';
-	cost: number;
-	armorPeircing: string; // Todo: string literal of AP types
-}
-
-type Roles = 'Solo' | 'Rocker' | 'Netrunner' | 'Media' | 'Nomad' | 'Fixer' | 'Cop' | 'Corp' | 'Techie' | 'Medtechie';
-
-const specialAbilityNames: { [key in Roles]: string } = {
-	Solo: 'Combat Sense',
-	Rocker: 'Charismatic Leadership',
-	Netrunner: 'Interface',
-	Media: 'Credibility',
-	Nomad: 'Family',
-	Fixer: 'Streatdeal',
-	Cop: 'Authority',
-	Corp: 'Resources',
-	Techie: 'Jury Rig',
-	Medtechie: 'Medical Tech'
-};
