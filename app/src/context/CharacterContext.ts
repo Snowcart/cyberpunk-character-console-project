@@ -9,7 +9,7 @@ export interface CharacterContext {
 }
 
 export const defaultCharacterContext = {
-	character: {} as Character,
+	character: new Character(),
 	setCharacter: () => {},
 	editable: false,
 	toggleEditable: () => {}

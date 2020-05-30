@@ -4,6 +4,7 @@ import Title from './title/Title';
 import { useCharacter } from './hooks/useCharacter';
 import { characterContext } from './context/CharacterContext';
 import Stats from './stats/Stats';
+import Saves from './saves/Saves';
 
 export default () => {
 	const character = useCharacter();
@@ -43,9 +44,16 @@ export default () => {
 					<div style={{ border: '1px solid blue', gridArea: '1 / 1 / span 1 / span 3' }}>
 						<Title />
 					</div>
-					<div style={{ border: '1px solid black', gridArea: '2 / 1 / span 1 / span 1', overflow: 'hidden' }}>
+					<div
+						style={{
+							border: '1px solid black',
+							gridArea: '2 / 1 / span 1 / span 1',
+							overflow: 'hidden',
+							position: 'relative'
+						}}
+					>
 						<Stats />
-						<p>Save / btm</p>
+						<Saves />
 					</div>
 					<div style={{ border: '1px solid purple', gridArea: '2 / 2 / span 1 / span 1' }}>
 						<p>Actions</p>
