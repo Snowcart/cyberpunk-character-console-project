@@ -80,13 +80,13 @@ const Button = styled.button`
 const Heading = styled.h1`
 	color: #00ccff;
 	text-shadow: 2px 1px #00ffff;
-	display: inline-block;
+	float: left;
 	margin-left: 40px;
+	padding-right: 5px;
 	height: 100%;
 	vertical-align: middle;
 	font-size: 24px;
 	font-weight: normal;
-	max-width: 25%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
