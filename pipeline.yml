@@ -1,6 +1,8 @@
 steps:
+  - label: "Echo"
+    command: "echo hello"
+
+  - label: "Install"
   - commands: >
-      echo "Building"
       cd app
       npm install
-      npm run webpack-prod
