@@ -1,0 +1,5 @@
+steps:
+  - commands:
+      - "cd app"
+      - "npm install"
+      - "npm run webpack-prod"
