@@ -11,6 +11,7 @@ export default interface Weapon {
 	accuracy: number;
 	reliablility: 'VR' | 'ST' | 'UR';
 	cost: number;
-	armorPeircing: string; // Todo: string literal of AP types
+	armorPeircing?: string; // Todo: string literal of AP types
+	isSmartgun?: boolean;
 	equipped: boolean;
 }

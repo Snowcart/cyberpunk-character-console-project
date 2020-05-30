@@ -3,6 +3,7 @@ import Stats from './stats';
 import Cybernetics from './cybernetics';
 import Armor from './armor';
 import Roles from './roles';
+import Weapon from './weapon';
 
 export default interface Character {
 	name: string;
@@ -20,12 +21,12 @@ export default interface Character {
 	//Humanity
 
 	wounds: number;
-	currentWoundType: number; //1-8? light -> mortal 6
+	//Calc: currentWoundType: number; //1-8? light -> mortal 6
 
 	skills: {
-		specialAbility: number;
+		specialAbility: { name: string; value: number; ip: number };
 
-		list: [{ [key in keyof typeof skills]: { value: number; ip: number } }];
+		list: { [key: string]: { value: number; ip: number } }; // Change key to only be skills
 	};
 
 	// Todo: figure out custom languages or expert x or martial arts
@@ -54,18 +55,17 @@ export default interface Character {
 	};
 
 	inventory: {
-		cyberwear: Cybernetics[];
+		cybernetics: Cybernetics[];
 
 		armor: Armor[];
 
 		weapons: Weapon[];
 
-		gear: [
-			{
-				name: string;
-				cost: number;
-			}
-		];
+		gear: {
+			name: string;
+			count: number;
+			cost: number;
+		}[];
 	};
 
 	//Lifepath
