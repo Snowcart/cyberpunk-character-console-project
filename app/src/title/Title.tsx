@@ -116,6 +116,7 @@ const FileLabel = styled.label`
 	cursor: pointer;
 	-webkit-appearance: button;
 	-webkit-writing-mode: horizontal-tb !important;
+	writing-mode: horizontal-tb !important;
 	text-rendering: auto;
 	color: -internal-light-dark-color(buttontext, rgb(170, 170, 170));
 	letter-spacing: normal;
@@ -123,7 +124,6 @@ const FileLabel = styled.label`
 	text-transform: none;
 	text-indent: 0px;
 	text-shadow: none;
-	display: inline-block;
 	text-align: center;
 	align-items: flex-start;
 	cursor: default;
