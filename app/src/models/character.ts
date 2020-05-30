@@ -64,18 +64,18 @@ export default class Character {
 		};
 	};
 
-	private calculateLocationSp = (location: 'head' | 'torso' | 'arms' | 'legs') => {
-		const armors = this.inventory.armor.filter((a) => a[location]).sort((a, b) => a.stoppingPower - b.stoppingPower);
-	};
+	// private calculateLocationSp = (location: 'head' | 'torso' | 'arms' | 'legs') => {
+	// 	const armors = this.inventory.armor.filter((a) => a[location]).sort((a, b) => a.stoppingPower - b.stoppingPower);
+	// };
 
-	private bonusSp = (diff: number) => {
-		if (diff <= 4) return 5;
-		if (diff <= 8) return 4;
-		if (diff <= 14) return 3;
-		if (diff <= 20) return 2;
-		if (diff <= 26) return 1;
-		return 0;
-	};
+	// private bonusSp = (diff: number) => {
+	// 	if (diff <= 4) return 5;
+	// 	if (diff <= 8) return 4;
+	// 	if (diff <= 14) return 3;
+	// 	if (diff <= 20) return 2;
+	// 	if (diff <= 26) return 1;
+	// 	return 0;
+	// };
 
 	inventory: {
 		cybernetics: Cybernetics[];

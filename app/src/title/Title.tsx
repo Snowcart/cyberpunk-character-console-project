@@ -10,7 +10,7 @@ const Title = () => {
 	};
 
 	const onHeadingValueChange = (e: any, name: string) => {
-		characterCtx.setCharacter({ ...characterCtx.character, [name]: e.target.value });
+		characterCtx.setCharacter({ ...characterCtx.character });
 	};
 
 	const fields = (
