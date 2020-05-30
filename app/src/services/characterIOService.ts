@@ -1,11 +1,9 @@
-import Character from 'src/models/Character';
+import Character from '../models/Character';
 import fileDownload from 'js-file-download';
 
 export const importCharacter = (json: string) => {
 	const data = JSON.parse(json);
-
 	const character = Object.assign(new Character(), data);
-
 	return character;
 };
 

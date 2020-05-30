@@ -1,13 +1,13 @@
-import Character from 'src/models/Character';
+import Character from '../models/Character';
 
-const blazeRunner: Character = Object.assign(new Character(), {
+export const blazeRunner: Character = Object.assign(new Character(), {
 	name: '420Bl@zeRunn3r',
 	role: 'Netrunner',
 	characterPoints: 67,
 	reputation: 2,
 
 	stats: {
-		inteligence: 10,
+		intelligence: 10,
 		reflex: 7,
 		tech: 8,
 		cool: 6,

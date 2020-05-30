@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { characterContext } from '../context/CharacterContext';
 import styled from 'styled-components';
-import Character from 'src/models/Character';
+import Character from '../models/Character';
+import { exportCharacter, importCharacter as getCharacter } from '../services/characterIOService';
+import { blazeRunner } from '../testData/blazeRunner';
 
 const Title = () => {
 	const characterCtx = React.useContext(characterContext);
@@ -16,6 +18,16 @@ const Title = () => {
 
 	const onHeadingValueChange = (e: any, key: string) =>
 		characterCtx.setCharacter({ ...characterCtx.character, [key]: e.target.value });
+
+	const onExportClick = () => exportCharacter(characterCtx.character);
+
+	const onImportChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+		const file = e.target.files[0];
+		const json = await file.text();
+		const character = getCharacter(json);
+		console.log(character);
+		characterCtx.setCharacter(character);
+	};
 
 	const fields = (
 		<>
@@ -40,8 +52,11 @@ const Title = () => {
 			<Heading> CCCP </Heading>
 			{characterCtx.editable ? editableFields : fields}
 			<Button onClick={onCloseButtonClick}>Close</Button>
-			<Button>Export</Button>
-			<Button>Import</Button>
+			<Button onClick={onExportClick}>Export</Button>
+			<FileLabel>
+				<FileInput type="file" accept=".json" onChange={onImportChange} />
+				Import
+			</FileLabel>
 			<Button onClick={onEditButtonClick}>{characterCtx.editable ? 'Finish' : 'Edit'}</Button>
 		</TitleBar>
 	);
@@ -91,4 +106,35 @@ const Input = styled.input`
 	border-color: #00ffff;
 	margin: auto;
 	color: #00ccff;
+`;
+
+const FileInput = styled.input`
+	display: none;
+`;
+
+const FileLabel = styled.label`
+	float: right;
+	cursor: pointer;
+	-webkit-appearance: button;
+	-webkit-writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: -internal-light-dark-color(buttontext, rgb(170, 170, 170));
+	letter-spacing: normal;
+	word-spacing: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	background-color: rgb(239, 239, 239);
+	box-sizing: border-box;
+	margin: 0em;
+	font: 400 13.3333px Arial;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+	border-image: initial;
 `;
