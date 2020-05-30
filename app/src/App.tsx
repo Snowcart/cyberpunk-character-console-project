@@ -9,11 +9,20 @@ export default () => {
 	const character = useCharacter();
 
 	const GlobalStyle = createGlobalStyle`
+	html {
+		height: 100%;
+	}
+
 	body {
+		height: 100%;
 		margin: 0;
 		background-color: #2e2e2e;
 		color: #00ccff;
 		text-shadow: 2px 1px #00ffff;
+	}
+
+	#app {
+		height: 100%;
 	}
 	`;
 
@@ -23,6 +32,7 @@ export default () => {
 			<characterContext.Provider value={character}>
 				<div
 					style={{
+						height: 'calc(100% - 2px)',
 						display: 'grid',
 						border: '1px solid blue',
 						gridColumnStart: 1,
@@ -30,30 +40,26 @@ export default () => {
 						gridTemplateRows: '60px calc(50% - 60px) 60px calc(50% - 60px)'
 					}}
 				>
-					<div style={{ border: '1px solid blue', gridColumn: '1 / 3' }}>
+					<div style={{ border: '1px solid blue', gridArea: '1 / 1 / span 1 / span 3' }}>
 						<Title />
 					</div>
-					<div style={{ border: '1px solid blue', gridRow: 2, gridColumn: 1, overflow: 'hidden' }}>
-						<div style={{ border: '1px solid blue' }}>
-							<Stats />
-						</div>
-						<div style={{ border: '1px solid blue' }}>
-							<p>Save / btm</p>
-						</div>
+					<div style={{ border: '1px solid black', gridArea: '2 / 1 / span 1 / span 1', overflow: 'hidden' }}>
+						<Stats />
+						<p>Save / btm</p>
 					</div>
-					<div style={{ border: '1px solid blue', gridColumn: 2, gridRow: 2 }}>
+					<div style={{ border: '1px solid purple', gridArea: '2 / 2 / span 1 / span 1' }}>
 						<p>Actions</p>
 					</div>
-					<div style={{ border: '1px solid blue', gridColumn: '1 / 2', gridRow: 3 }}>
+					<div style={{ border: '1px solid red', gridArea: '3 / 1 / span 1 / span 2' }}>
 						<p>Health</p>
 					</div>
-					<div style={{ border: '1px solid blue', gridRow: 4, gridColumn: '1 / 2' }}>
+					<div style={{ border: '1px solid blue', gridArea: '4 / 1 / span 1 / span 1' }}>
 						<p>Inventory</p>
 					</div>
-					<div style={{ border: '1px solid blue', gridRow: '3 / 4', gridColumn: 2 }}>
+					<div style={{ border: '1px solid blue', gridArea: '4 / 2 / span 1 / span 1' }}>
 						<p>Cybernetics</p>
 					</div>
-					<div style={{ border: '1px solid blue', gridRow: '2 / 4', gridColumn: 3 }}>
+					<div style={{ border: '1px solid blue', gridArea: '2 / 3 / span 3 / span 1' }}>
 						<p>Stats</p>
 					</div>
 				</div>
