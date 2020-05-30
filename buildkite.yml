@@ -5,6 +5,6 @@ steps:
   - wait
 
   - label: "Install"
-  - commands: >
+    commands: >
       cd app
       npm install
