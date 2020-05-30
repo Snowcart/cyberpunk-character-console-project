@@ -1,6 +1,6 @@
-import Character from 'src/models/character';
+import Character from 'src/models/Character';
 
-const blazeRunner: Character = {
+const blazeRunner: Character = Object.assign(new Character(), {
 	name: '420Bl@zeRunn3r',
 	role: 'Netrunner',
 	characterPoints: 67,
@@ -161,4 +161,4 @@ const blazeRunner: Character = {
 	I Hate Them
 	Go into murderous killing rage and rip their face off
 	They can throw an entire goverenment agency at me`
-};
+});

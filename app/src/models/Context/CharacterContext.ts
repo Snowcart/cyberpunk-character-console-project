@@ -1,4 +1,4 @@
-import Character from '../character';
+import Character from '../Character';
 import * as React from 'react';
 
 export interface CharacterContext {
