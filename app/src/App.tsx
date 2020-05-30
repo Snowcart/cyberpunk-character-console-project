@@ -2,13 +2,19 @@ import * as React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import Character from './models/character';
 import Title from './title/Title';
+import { useCharacter } from './hooks/useCharacter';
+import { characterContext } from './models/Context/CharacterContext';
 
 export default () => <App />;
 
 const App = () => {
-	const character = {} as Character;
-	character.name = 'Plaxpamon';
-	const CharacterContext = React.createContext(character);
+	const character = useCharacter();
+
+	// this is just for testing
+	const { setCharacter } = React.useContext(characterContext);
+	character.character.name = 'Plaxpamon';
+	setCharacter(character.character);
+
 	const GlobalStyle = createGlobalStyle`
 	body {
 		margin: 0;
@@ -19,9 +25,9 @@ const App = () => {
 	return (
 		<>
 			<GlobalStyle />
-			<CharacterContext.Provider value={character}>
-				<Title context={CharacterContext} />
-			</CharacterContext.Provider>
+			<characterContext.Provider value={character}>
+				<Title />
+			</characterContext.Provider>
 			<h1>Hello worlds</h1>
 		</>
 	);

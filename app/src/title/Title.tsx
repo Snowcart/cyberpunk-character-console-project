@@ -1,14 +1,9 @@
 import * as React from 'react';
-import Character from 'src/models/character';
+import { characterContext } from '../models/Context/CharacterContext';
 
-const Title = (props: Props) => {
-	const character = React.useContext(props.context);
-	character.name = 'Halt!';
-	return <h1>{character.name}</h1>;
+const Title = () => {
+	const characterCtx = React.useContext(characterContext);
+	return <h1>{characterCtx.character.name}</h1>;
 };
-
-interface Props {
-	context: React.Context<Character>;
-}
 
 export default Title;
