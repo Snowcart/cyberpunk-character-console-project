@@ -3,7 +3,6 @@ import { characterContext } from '../context/CharacterContext';
 import styled from 'styled-components';
 import Character from '../models/Character';
 import { exportCharacter, importCharacter as getCharacter } from '../services/characterIOService';
-import { blazeRunner } from '../testData/blazeRunner';
 
 const Title = () => {
 	const characterCtx = React.useContext(characterContext);
