@@ -1,0 +1,10 @@
+steps:
+  - label: "Echo"
+    command: "echo hello"
+
+  - wait
+
+  - label: "Install"
+  - commands: >
+      cd app
+      npm install
