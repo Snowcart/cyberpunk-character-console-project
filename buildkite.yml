@@ -1,8 +1,5 @@
 steps:
-  - label: "Echo"
-    command: "echo hello"
-
   - label: "Install"
-    commands: >
-      cd app
-      npm install
+    commands:
+      - "cd app"
+      - "npm install"
