@@ -1,0 +1,5 @@
+steps:
+  - label: "Install"
+    commands:
+      - "cd app"
+      - "npm install"
