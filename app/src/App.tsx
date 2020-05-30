@@ -21,18 +21,41 @@ export default () => {
 		<>
 			<GlobalStyle />
 			<characterContext.Provider value={character}>
-				<Title />
-				<div style={{ display: 'grid', border: '1px solid blue', gridColumnStart: 1 }}>
-					<div style={{ border: '1px solid blue' }}>
+				<div
+					style={{
+						display: 'grid',
+						border: '1px solid blue',
+						gridColumnStart: 1,
+						gridTemplateColumns: '30% 40% 30%',
+						gridTemplateRows: '60px calc(50% - 60px) 60px calc(50% - 60px)'
+					}}
+				>
+					<div style={{ border: '1px solid blue', gridColumn: '1 / 3' }}>
+						<Title />
+					</div>
+					<div style={{ border: '1px solid blue', gridRow: 2, gridColumn: 1, overflow: 'hidden' }}>
 						<div style={{ border: '1px solid blue' }}>
 							<Stats />
 						</div>
-						<div style={{ border: '1px solid blue' }}>{/* Save / BTM */}</div>
+						<div style={{ border: '1px solid blue' }}>
+							<p>Save / btm</p>
+						</div>
 					</div>
-					<div style={{ border: '1px solid blue' }}>{/* Actions */}</div>
-					<div style={{ border: '1px solid blue' }}>{/* Inventory */}</div>
-					<div style={{ border: '1px solid blue' }}>{/* Cybernetics */}</div>
-					<div style={{ border: '1px solid blue' }}>{/* Stats */}</div>
+					<div style={{ border: '1px solid blue', gridColumn: 2, gridRow: 2 }}>
+						<p>Actions</p>
+					</div>
+					<div style={{ border: '1px solid blue', gridColumn: '1 / 2', gridRow: 3 }}>
+						<p>Health</p>
+					</div>
+					<div style={{ border: '1px solid blue', gridRow: 4, gridColumn: '1 / 2' }}>
+						<p>Inventory</p>
+					</div>
+					<div style={{ border: '1px solid blue', gridRow: '3 / 4', gridColumn: 2 }}>
+						<p>Cybernetics</p>
+					</div>
+					<div style={{ border: '1px solid blue', gridRow: '2 / 4', gridColumn: 3 }}>
+						<p>Stats</p>
+					</div>
 				</div>
 			</characterContext.Provider>
 		</>
