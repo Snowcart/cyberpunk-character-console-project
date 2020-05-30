@@ -14,6 +14,8 @@ const App = () => {
 	body {
 		margin: 0;
 		background-color: #2e2e2e;
+		color: #00ccff;
+		text-shadow: 2px 1px #00ffff;
 	}
 	`;
 
