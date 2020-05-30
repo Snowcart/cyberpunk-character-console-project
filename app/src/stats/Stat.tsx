@@ -8,6 +8,7 @@ const Stat = (props: Props) => {
 		const value = e.target.value > 10 ? 10 : e.target.value;
 		const key = getNameFromCode(statCode);
 		characterCtx.setCharacter({
+			// TODO: this could use a reducer
 			...characterCtx.character,
 			stats: { ...characterCtx.character?.stats, [key]: value }
 		});
