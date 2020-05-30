@@ -2,7 +2,6 @@
 packages/
 
 .vs/
-*.code-workspace
 *.user
 bin/
 obj/
