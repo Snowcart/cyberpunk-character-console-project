@@ -3,17 +3,12 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Character from './models/Character';
 import Title from './title/Title';
 import { useCharacter } from './hooks/useCharacter';
-import { characterContext } from './models/Context/CharacterContext';
+import { characterContext } from './context/CharacterContext';
 
 export default () => <App />;
 
 const App = () => {
 	const character = useCharacter();
-
-	// this is just for testing
-	const { setCharacter } = React.useContext(characterContext);
-	character.character.name = 'Plaxpamon';
-	setCharacter(character.character);
 
 	const GlobalStyle = createGlobalStyle`
 	body {
