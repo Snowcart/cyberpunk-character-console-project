@@ -8,18 +8,6 @@ const Stats = () => {
 	const characterCtx = React.useContext(characterContext);
 	let stats: Stats = characterCtx.character?.stats ?? ({} as Stats);
 
-	if (!stats.intelligence) {
-		stats.intelligence = 9;
-		stats.attractiveness = 9;
-		stats.body = 9;
-		stats.cool = 9;
-		stats.empathy = 9;
-		stats.luck = 9;
-		stats.movementAbility = 9;
-		stats.reflex = 9;
-		stats.tech = 9;
-	}
-
 	const createStatTable = () => {
 		const statArray: StatView[] = [
 			{ title: 'INT', value: stats.intelligence },
@@ -40,10 +28,10 @@ const Stats = () => {
 
 	const statBlock = (
 		<>
-			<div>
+			<StatWrapper>
 				<h2>Stats:</h2>
 				<div>{createStatTable()}</div>
-			</div>
+			</StatWrapper>
 		</>
 	);
 

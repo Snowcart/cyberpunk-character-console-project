@@ -41,6 +41,13 @@ interface Props {
 const StatSection = styled.div`
 	float: left;
 	width: 33%;
+	height: 6vh;
+
+	input {
+		width: 2vw;
+		background: transparent;
+		color: #00ccff;
+	}
 `;
 
 const getNameFromCode = (statCode: string) => {
