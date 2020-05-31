@@ -2,6 +2,7 @@ import { characterContext } from '../context/CharacterContext';
 import * as React from 'react';
 import styled from 'styled-components';
 import Character from '../models/character';
+import ArmorGrid from './ArmorGrid';
 
 const Saves = () => {
 	const characterCtx = React.useContext(characterContext);
@@ -30,6 +31,7 @@ const Saves = () => {
 		<BottomBarWrapper>
 			{Save}
 			{Btm}
+			<ArmorGrid />
 		</BottomBarWrapper>
 	);
 };
@@ -37,16 +39,21 @@ const Saves = () => {
 export default Saves;
 
 const BottomBarWrapper = styled.div`
-	position: relative;
-	height: 0;
+	height: 170px;
+	width: 100%;
+	min-width: 500x;
+	padding-top: 15px;
+	bottom: 0;
+	position: absolute;
 `;
 
 const SaveWrapper = styled.div`
-	width: 100px;
+	min-width: 100px;
+	width: 20%;
 	height: 170px;
 	border: 1px solid #00ccff;
 	bottom: 0;
-	display: inline-block;
+	float: left;
 `;
 
 const SaveTitle = styled.div`
@@ -58,6 +65,5 @@ const SaveTitle = styled.div`
 const SaveText = styled.div`
 	font-size: 50px;
 	width: 100%;
-	height: 100%;
 `;
 const BtmWrapper = styled(SaveWrapper)``;

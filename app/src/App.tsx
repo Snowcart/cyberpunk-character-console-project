@@ -47,7 +47,7 @@ export default () => {
 						<Title />
 					</div>
 					<StatsWrapper>
-						<div>
+						<div style={{ height: '100%', minHeight: '350px', position: 'relative' }}>
 							<Stats />
 							<Saves />
 						</div>
@@ -78,7 +78,6 @@ const StatsWrapper = styled.div`
 	border: 1px solid black;
 	gridarea: 2 / 1 / span 1 / span 1;
 	overflow-y: scroll;
-	position: relative;
 	&::-webkit-scrollbar {
 		display: none;
 	}

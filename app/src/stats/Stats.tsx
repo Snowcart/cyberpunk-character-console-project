@@ -3,10 +3,13 @@ import * as React from 'react';
 import Stats from '../models/stats';
 import styled from 'styled-components';
 import Stat from './Stat';
+import Character from '../models/character';
 
 const Stats = () => {
 	const characterCtx = React.useContext(characterContext);
 	let stats: Stats = characterCtx.character?.stats ?? ({} as Stats);
+	var charClass = new Character();
+	charClass.stats = stats;
 
 	const createStatTable = () => {
 		const statArray: StatView[] = [
@@ -41,6 +44,7 @@ const Stats = () => {
 interface StatView {
 	title: string;
 	value: number;
+	//calculatedValue: number;
 }
 
 export default Stats;
