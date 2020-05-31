@@ -1,6 +1,7 @@
 import { characterContext } from '../context/CharacterContext';
 import * as React from 'react';
 import styled from 'styled-components';
+import ArmorGridCell from './ArmorGridCell';
 
 const ArmorGrid = () => {
 	const characterCtx = React.useContext(characterContext);
@@ -25,6 +26,26 @@ const ArmorGrid = () => {
 		});
 	};
 
+	const getSpSection = () => {
+		// Actual Proof Typescript is Garbage
+		const locations: ('head' | 'torso' | 'rightArm' | 'leftArm' | 'rightLeg' | 'leftLeg')[] = [
+			'head',
+			'torso',
+			'rightArm',
+			'leftArm',
+			'rightLeg',
+			'leftLeg'
+		];
+
+		return locations.map((x) => {
+			return (
+				<ArmorSectionDiv>
+					<ArmorGridCell location={x} />
+				</ArmorSectionDiv>
+			);
+		});
+	};
+
 	return (
 		<ArmorGridWrapper>
 			<LocationAndSp>
@@ -37,6 +58,7 @@ const ArmorGrid = () => {
 				<ArmorTitle>
 					<div>SP</div>
 				</ArmorTitle>
+				{getSpSection()}
 			</LocationAndSp>
 		</ArmorGridWrapper>
 	);

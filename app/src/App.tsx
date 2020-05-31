@@ -9,8 +9,6 @@ import Saves from './saves/Saves';
 export default () => {
 	const character = useCharacter();
 
-	console.log(character.character);
-
 	const GlobalStyle = createGlobalStyle`
 	html {
 		height: 100%;
@@ -22,6 +20,11 @@ export default () => {
 		background-color: #2e2e2e;
 		color: #00ccff;
 		text-shadow: 2px 1px #00ffff;
+	}
+
+	input {
+		background-color: #2e2e2e;
+		color: #00ccff
 	}
 
 	#app {
@@ -47,7 +50,7 @@ export default () => {
 						<Title />
 					</div>
 					<StatsWrapper>
-						<div style={{ height: '100%', minHeight: '350px', position: 'relative' }}>
+						<div style={{ height: '100%', minHeight: '310px', position: 'relative' }}>
 							<Stats />
 							<Saves />
 						</div>
@@ -75,7 +78,7 @@ export default () => {
 
 const StatsWrapper = styled.div`
 	overflow: scroll;
-	border: 1px solid black;
+	border: 2px solid #00ffff;
 	gridarea: 2 / 1 / span 1 / span 1;
 	overflow-y: scroll;
 	&::-webkit-scrollbar {

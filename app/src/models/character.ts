@@ -47,6 +47,16 @@ export default class Character {
 		return calculateSp(armors);
 	};
 
+	armor: {
+		head: number;
+		torso: number;
+		rightArm: number;
+		leftArm: number;
+		rightLeg: number;
+		leftLeg: number;
+	};
+
+	// this is overkill for MVP
 	currentArmor = {
 		head: {
 			damage: 0,

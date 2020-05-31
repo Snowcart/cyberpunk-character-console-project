@@ -65,5 +65,7 @@ const SaveTitle = styled.div`
 const SaveText = styled.div`
 	font-size: 50px;
 	width: 100%;
+	text-align: center;
+	margin-top: 40%;
 `;
 const BtmWrapper = styled(SaveWrapper)``;

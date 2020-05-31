@@ -32,7 +32,6 @@ const Stats = () => {
 	const statBlock = (
 		<>
 			<StatWrapper>
-				<h2>Stats:</h2>
 				<div>{createStatTable()}</div>
 			</StatWrapper>
 		</>
@@ -49,4 +48,7 @@ interface StatView {
 
 export default Stats;
 
-const StatWrapper = styled.div``;
+const StatWrapper = styled.div`
+	width: 100%;
+	text-align: center;
+`;
