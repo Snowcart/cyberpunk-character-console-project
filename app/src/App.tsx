@@ -5,6 +5,7 @@ import { useCharacter } from './hooks/useCharacter';
 import { characterContext } from './context/CharacterContext';
 import Stats from './stats/Stats';
 import Saves from './saves/Saves';
+import Skills from './skills/skills';
 
 export default () => {
 	const character = useCharacter();
@@ -67,9 +68,9 @@ export default () => {
 					<div style={{ border: '1px solid blue', gridArea: '4 / 2 / span 1 / span 1' }}>
 						<p>Cybernetics</p>
 					</div>
-					<div style={{ border: '1px solid blue', gridArea: '2 / 3 / span 3 / span 1' }}>
-						<p>Stats</p>
-					</div>
+					<SkillsWrapper style={{ border: '1px solid blue', gridArea: '2 / 3 / span 3 / span 1' }}>
+						<Skills />
+					</SkillsWrapper>
 				</div>
 			</characterContext.Provider>
 		</>
@@ -80,6 +81,15 @@ const StatsWrapper = styled.div`
 	overflow: scroll;
 	border: 2px solid #00ffff;
 	gridarea: 2 / 1 / span 1 / span 1;
+	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+`;
+
+const SkillsWrapper = styled.div`
+	/* border: 1px solid blue;
+	gridarea: 2 / 3 / span 3 / span 1; this is the same as the inline style, but doesn't work */
 	overflow-y: scroll;
 	&::-webkit-scrollbar {
 		display: none;

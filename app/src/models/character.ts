@@ -4,13 +4,15 @@ import Armor from './armor';
 import Roles from './roles';
 import Weapon from './weapon';
 import InventoryRecord from './gear';
+import { Skill } from './Skill';
 
+// todo: Slowly start changing this to an interface, and remove functions and put them in helper.ts
 export default class Character {
 	name: string;
 	role: Roles;
 	characterPoints: number;
 	reputation: number;
-
+	skills: Skill[];
 	stats: Stats;
 
 	getRun = () => this.stats.movementAbility * 3;
@@ -25,19 +27,13 @@ export default class Character {
 		if (body == 10) return -4;
 		if (body >= 11) return -5;
 	};
-	getHumanity = () => this.stats.empathy * 10 - this.inventory.cybernetics.reduce((s, c) => (s += c.humanityLoss), 0);
-	getEmpathy = () => Math.floor(this.getHumanity() / 10);
+	//getHumanity = () => this.stats.empathy * 10 - this.inventory.cybernetics.reduce((s, c) => (s += c.humanityLoss), 0);
+	//getEmpathy = () => Math.floor(this.getHumanity() / 10);
 
 	wounds: number;
 	getCurrentWoundType = () => Math.ceil(this.wounds / 4);
 	getSave = () => this.stats.body - this.getCurrentWoundType();
 	getDeathSave = () => this.stats.body - Math.max(this.getCurrentWoundType() - 3, 0);
-
-	skills: {
-		specialAbility: { name: string; value: number; ip: number };
-
-		list: { [key: string]: { value: number; ip: number } }; // Change key to only be skills
-	};
 
 	// Todo: figure out custom languages or expert x or martial arts
 	// Todo: figure out complete custom skill
