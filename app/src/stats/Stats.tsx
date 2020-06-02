@@ -58,7 +58,7 @@ const StatWrapper = styled.div`
 	text-align: center;
 `;
 
-const getEmpathy = (character: Character) => {
+export const getEmpathy = (character: Character) => {
 	return Math.floor(getHumanity(character) / 10);
 };
 
