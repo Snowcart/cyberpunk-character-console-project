@@ -43,7 +43,7 @@ export default () => {
 						display: 'grid',
 						border: '1px solid blue',
 						gridColumnStart: 1,
-						gridTemplateColumns: '540px auto 25%',
+						gridTemplateColumns: '534px auto 25%',
 						gridTemplateRows: '60px calc(50% - 60px) 60px calc(50% - 60px)'
 					}}
 				>
