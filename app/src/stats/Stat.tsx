@@ -4,6 +4,7 @@ import * as React from 'react';
 
 const Stat = (props: Props) => {
 	const characterCtx = React.useContext(characterContext);
+	console.log(props.split);
 	const updateStat = (e: any, statCode: string) => {
 		const value = e.target.value > 10 ? 10 : e.target.value;
 		const key = getNameFromCode(statCode);

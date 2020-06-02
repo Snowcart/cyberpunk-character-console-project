@@ -24,7 +24,6 @@ const Title = () => {
 		const file = e.target.files[0];
 		const json = await file.text();
 		const character = getCharacter(json);
-		console.log(character);
 		characterCtx.setCharacter(character);
 	};
 

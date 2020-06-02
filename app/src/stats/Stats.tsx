@@ -8,8 +8,6 @@ import Character from '../models/character';
 const Stats = () => {
 	const characterCtx = React.useContext(characterContext);
 	let stats: Stats = characterCtx.character?.stats ?? ({} as Stats);
-	var charClass = new Character();
-	charClass.stats = stats;
 
 	const createStatTable = () => {
 		const statArray: StatView[] = [
@@ -20,12 +18,19 @@ const Stats = () => {
 			{ title: 'LUCK', value: stats.luck },
 			{ title: 'MA', value: stats.movementAbility },
 			{ title: 'BODY', value: stats.body },
-			{ title: 'EMP', value: stats.empathy },
+			{ title: 'EMP', value: stats.empathy, calculatedValue: getEmpathy(characterCtx.character) },
 			{ title: 'COOL', value: stats.cool }
 		];
 
 		return statArray.map((x) => {
-			return <Stat title={x.title} number={x.value} />;
+			return (
+				<Stat
+					title={x.title}
+					number={x.value}
+					split={x.calculatedValue ? true : false}
+					calculated={x.calculatedValue}
+				/>
+			);
 		});
 	};
 
@@ -43,7 +48,7 @@ const Stats = () => {
 interface StatView {
 	title: string;
 	value: number;
-	//calculatedValue: number;
+	calculatedValue?: number;
 }
 
 export default Stats;
@@ -52,3 +57,11 @@ const StatWrapper = styled.div`
 	width: 100%;
 	text-align: center;
 `;
+
+const getEmpathy = (character: Character) => {
+	return Math.floor(getHumanity(character) / 10);
+};
+
+const getHumanity = (character: Character) => {
+	return character.stats?.empathy * 10 - character.inventory?.cybernetics?.reduce((s, c) => (s += c.humanityLoss), 0);
+};
