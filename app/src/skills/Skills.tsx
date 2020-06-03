@@ -12,13 +12,12 @@ const Skills = () => {
 	const defaultSkillGroup = categories.map((c) => {
 		return skills.filter((s) => s.category === c);
 	});
-	const [filteredSkills, setFilteredSkills] = React.useState(skills);
 	const [groupSkills, setGroupSkills] = React.useState(defaultSkillGroup);
 	const [fuzzySearch, setFuzzySearch] = React.useState(null as string);
 
 	React.useEffect(() => {
 		const updatedFilteredSkills = getFilteredSkills(skills, fuzzySearch);
-		setFilteredSkills(updatedFilteredSkills);
+		if (!ctx.character.skills) ctx.setCharacter({ ...ctx.character, skills: skills });
 		setGroupSkills(
 			categories.map((c) => {
 				return updatedFilteredSkills.filter((s) => s.category === c);
@@ -26,16 +25,38 @@ const Skills = () => {
 		);
 	}, [fuzzySearch]);
 
+	const editSkill = (e: any, name: string) => {
+		const value = e.target.value ? (e.target.value > 10 ? 10 : e.target.value) : 0;
+		const char = ctx.character;
+		char.skills.find((x) => x.name === name).points = parseInt(value);
+		ctx.setCharacter({
+			...ctx.character
+		});
+	};
+
 	const fuzzySearchBar = (
-		<div>
+		<FuzzySearchBar>
 			<input
 				type="text"
 				onChange={(e) => (e.target.value ? setFuzzySearch(e.target.value) : setFuzzySearch(null))}
 				placeholder="< search >"
 				value={fuzzySearch}
 			/>
-		</div>
+		</FuzzySearchBar>
 	);
+
+	const statValue = (s: Skill, calculatedValue: number) => {
+		return ctx.editable ? (
+			<>
+				{s.name}: [{' '}
+				<SkillInput type="number" onChange={(e) => editSkill(e, s.name)} value={parseInt(s.points.toString())} /> ]
+			</>
+		) : (
+			<>
+				{s.name}: <strong>{`[ ${s.points} / ${calculatedValue ? calculatedValue : s.points} ]`}</strong>
+			</>
+		);
+	};
 
 	const showSkillsByGroup = groupSkills.map((c) => {
 		return (
@@ -46,9 +67,7 @@ const Skills = () => {
 						const calculatedValue = calcSkillValue(ctx.character, s);
 						return (
 							<SkillLineItem>
-								<span>
-									{s.name}: <strong>{`[ ${s.points} / ${calculatedValue ? calculatedValue : s.points} ]`}</strong>
-								</span>
+								<span>{statValue(s, calculatedValue)}</span>
 							</SkillLineItem>
 						);
 					})}
@@ -58,7 +77,7 @@ const Skills = () => {
 	});
 	return (
 		<>
-			<h2>Skills: {fuzzySearchBar}</h2>
+			<h2>{fuzzySearchBar}</h2>
 			<div>{showSkillsByGroup}</div>
 		</>
 	);
@@ -67,21 +86,24 @@ const Skills = () => {
 export default Skills;
 
 const calcSkillValue = (character: Character, skill: Skill) => {
+	skill.points = skill.points ? skill.points : 0;
 	switch (skill.category) {
 		case 'ATTR':
-			return skill.points + parseInt(character.stats.attractiveness?.toString()); // TS is absolute trashhhhhhh
+			return parseInt(skill.points.toString()) + parseInt(character.stats?.attractiveness?.toString()); // TS is absolute trashhhhhhh
 		case 'BODY':
-			return skill.points + parseInt(character.stats.body?.toString());
+			return parseInt(skill.points.toString()) + parseInt(character.stats?.body?.toString());
 		case 'COOL/WILL':
-			return skill.points + parseInt(character.stats.cool?.toString());
+			return parseInt(skill.points.toString()) + parseInt(character.stats?.cool?.toString());
 		case 'EMPATHY':
-			return skill.points + getEmpathy(character) ?? parseInt(character.stats.empathy?.toString());
+			return (
+				parseInt(skill.points.toString()) + getEmpathy(character) ?? parseInt(character.stats?.empathy?.toString())
+			);
 		case 'INT':
-			return skill.points + parseInt(character.stats.intelligence?.toString());
+			return parseInt(skill.points.toString()) + parseInt(character.stats?.intelligence?.toString());
 		case 'REF':
-			return skill.points + parseInt(character.stats.reflex?.toString());
+			return parseInt(skill.points.toString()) + parseInt(character.stats?.reflex?.toString());
 		case 'TECH':
-			return skill.points + parseInt(character.stats.tech?.toString());
+			return parseInt(skill.points.toString()) + parseInt(character.stats?.tech?.toString());
 		default:
 			return skill.points;
 	}
@@ -94,11 +116,25 @@ const SkillLineItem = styled.div`
 
 const SkillCategory = styled.div`
 	background-color: #00ccff;
-	margin-top: 10px;
-	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-bottom: 30px;
 	width: 100%;
 	font-size: 28px;
 	color: #2e2e2e;
+`;
+
+const SkillInput = styled.input`
+	max-width: 50px;
+	font-size: 24px;
+`;
+
+const FuzzySearchBar = styled.div`
+	font-size: 24px;
+	width: 100%;
+	input {
+		width: 100%;
+		font-size: 24px;
+	}
 `;
 
 const getFilteredSkills = (skills: Skill[], search: string) => {
