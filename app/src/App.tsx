@@ -6,6 +6,7 @@ import { characterContext } from './context/CharacterContext';
 import Stats from './stats/Stats';
 import Saves from './saves/Saves';
 import Skills from './skills/skills';
+import HealthBar from './health/Health';
 
 export default () => {
 	const character = useCharacter();
@@ -60,7 +61,7 @@ export default () => {
 						<p>Actions</p>
 					</div>
 					<div style={{ border: '1px solid red', gridArea: '3 / 1 / span 1 / span 2' }}>
-						<p>Health</p>
+						<HealthBar />
 					</div>
 					<div style={{ border: '1px solid blue', gridArea: '4 / 1 / span 1 / span 1' }}>
 						<p>Inventory</p>
