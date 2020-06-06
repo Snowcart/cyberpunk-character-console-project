@@ -1,16 +1,22 @@
 import * as React from 'react';
-import { characterContext } from 'src/context/CharacterContext';
-import InventoryRecord from 'src/models/gear';
+import { characterContext } from '../context/CharacterContext';
 
-export default () => {
-	const characterCtx = React.useContext(characterContext);
-	const inventory = characterCtx.character?.inventory.gear ?? [];
+const Inventory = () => {
+	const ctx = React.useContext(characterContext);
 
-	return (
+	React.useEffect(() => {
+		if (!ctx.character.inventory?.eddies)
+			ctx.setCharacter({ ...ctx.character, inventory: { ...ctx.character.inventory, eddies: 0 } });
+	}, []);
+
+	const InventoryTitle = (
 		<div>
-			{inventory.map((i) => (
-				<div>{i.item.name}</div>
-			))}
+			<h1>GEAR</h1>
+			<h1>€$ {ctx.character.inventory?.eddies}</h1>
 		</div>
 	);
+
+	return InventoryTitle;
 };
+
+export default Inventory;

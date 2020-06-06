@@ -2,9 +2,43 @@ export interface Skill {
 	name: string;
 	value: number;
 	points: number;
-	category: 'ATTR' | 'BODY' | 'COOL/WILL' | 'EMPATHY' | 'INT' | 'REF' | 'TECH';
+	category: 'ATTR' | 'BODY' | 'COOL/WILL' | 'EMPATHY' | 'INT' | 'REF' | 'TECH' | 'ROLE';
 	currentIp?: number;
 }
+
+export const getSpecialSkillsForRole = (role: string): Skill => {
+	const roleLower = role?.toLowerCase();
+	if (!role) return null;
+	switch (roleLower) {
+		case 'net runner':
+		case 'netrunner':
+			return { name: 'Interface', value: 0, points: 0, category: 'ROLE' };
+		case 'fixer':
+			return { name: 'Streetdeal', value: 0, points: 0, category: 'ROLE' };
+		case 'rockerboy':
+		case 'rockergirl':
+		case 'rockerthey':
+			return { name: 'Charismatic Leadership', value: 0, points: 0, category: 'ROLE' };
+		case 'solo':
+			return { name: 'Combat Sense', value: 0, points: 0, category: 'ROLE' };
+		case 'techie':
+			return { name: 'Jury Rig', value: 0, points: 0, category: 'ROLE' };
+		case 'medtechie':
+			return { name: 'Medical Tech', value: 0, points: 0, category: 'ROLE' };
+		case 'media':
+			return { name: 'Credibility', value: 0, points: 0, category: 'ROLE' };
+		case 'cop':
+		case 'pig':
+			return { name: 'Authority', value: 0, points: 0, category: 'ROLE' };
+		case 'corp':
+		case 'corporate':
+			return { name: 'Resources', value: 0, points: 0, category: 'ROLE' };
+		case 'nomad':
+			return { name: 'Family', value: 0, points: 0, category: 'ROLE' };
+		default:
+			return null;
+	}
+};
 
 export const getSkillsForCharacters = () => {
 	const defaultSkills: Skill[] = [

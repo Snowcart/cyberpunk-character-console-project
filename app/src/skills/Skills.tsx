@@ -1,7 +1,7 @@
 import { characterContext } from '../context/CharacterContext';
 import { useContext } from 'react';
 import Character from '../models/character';
-import { Skill, getSkillsForCharacters } from '../models/Skill';
+import { Skill, getSkillsForCharacters, getSpecialSkillsForRole } from '../models/Skill';
 import { getEmpathy } from '../stats/Stats';
 import * as React from 'react';
 import styled from 'styled-components';
@@ -14,6 +14,10 @@ const Skills = () => {
 	});
 	const [groupSkills, setGroupSkills] = React.useState(defaultSkillGroup);
 	const [fuzzySearch, setFuzzySearch] = React.useState(null as string);
+
+	React.useEffect(() => {
+		ctx.setCharacter({ ...ctx.character, specialSkill: getSpecialSkillsForRole(ctx.character.role) });
+	}, [ctx.character.role]);
 
 	React.useEffect(() => {
 		const updatedFilteredSkills = getFilteredSkills(skills, fuzzySearch);
@@ -58,7 +62,11 @@ const Skills = () => {
 		);
 	};
 
-	const showSkillsByGroup = groupSkills.map((c) => {
+	const showSkillsByGroup = (ctx.character.specialSkill
+		? [[ctx.character.specialSkill]].concat(groupSkills)
+		: groupSkills
+	).map((c) => {
+		console.log(c[0]);
 		return (
 			c.length > 0 && (
 				<>

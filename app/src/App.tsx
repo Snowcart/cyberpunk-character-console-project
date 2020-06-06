@@ -7,6 +7,7 @@ import Stats from './stats/Stats';
 import Saves from './saves/Saves';
 import Skills from './skills/skills';
 import HealthBar from './health/Health';
+import Inventory from './inventory/Inventory';
 
 export default () => {
 	const character = useCharacter();
@@ -64,7 +65,7 @@ export default () => {
 						<HealthBar />
 					</div>
 					<div style={{ border: '1px solid blue', gridArea: '4 / 1 / span 1 / span 1' }}>
-						<p>Inventory</p>
+						<Inventory />
 					</div>
 					<div style={{ border: '1px solid blue', gridArea: '4 / 2 / span 1 / span 1' }}>
 						<p>Cybernetics</p>
