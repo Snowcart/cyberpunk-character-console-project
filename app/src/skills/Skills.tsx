@@ -16,18 +16,21 @@ const Skills = () => {
 	const [fuzzySearch, setFuzzySearch] = React.useState(null as string);
 
 	React.useEffect(() => {
-		ctx.setCharacter({ ...ctx.character, specialSkill: getSpecialSkillsForRole(ctx.character.role) });
-	}, [ctx.character.role]);
-
-	React.useEffect(() => {
-		const updatedFilteredSkills = getFilteredSkills(skills, fuzzySearch);
+		const updatedFilteredSkills = getFilteredSkills(
+			skills.concat(ctx.character.role ? getSpecialSkillsForRole(ctx.character.role) : ({} as Skill)),
+			fuzzySearch
+		);
 		if (!ctx.character.skills) ctx.setCharacter({ ...ctx.character, skills: skills });
 		setGroupSkills(
 			categories.map((c) => {
 				return updatedFilteredSkills.filter((s) => s.category === c);
 			})
 		);
-	}, [fuzzySearch]);
+	}, [fuzzySearch, ctx.character.role]);
+
+	React.useEffect(() => {
+		ctx.setCharacter({ ...ctx.character, specialSkill: getSpecialSkillsForRole(ctx.character.role) });
+	}, [ctx.character.role]);
 
 	const editSkill = (e: any, name: string) => {
 		const value = e.target.value ? (e.target.value > 10 ? 10 : e.target.value) : 0;
@@ -62,11 +65,7 @@ const Skills = () => {
 		);
 	};
 
-	const showSkillsByGroup = (ctx.character.specialSkill
-		? [[ctx.character.specialSkill]].concat(groupSkills)
-		: groupSkills
-	).map((c) => {
-		console.log(c[0]);
+	const showSkillsByGroup = groupSkills.map((c) => {
 		return (
 			c.length > 0 && (
 				<>
@@ -154,4 +153,4 @@ const getFilteredSkills = (skills: Skill[], search: string) => {
 		: skills;
 };
 
-export const categories = ['ATTR', 'BODY', 'COOL/WILL', 'EMPATHY', 'INT', 'REF', 'TECH'];
+export const categories = ['ROLE', 'ATTR', 'BODY', 'COOL/WILL', 'EMPATHY', 'INT', 'REF', 'TECH'];

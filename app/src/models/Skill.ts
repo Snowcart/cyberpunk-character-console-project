@@ -36,7 +36,7 @@ export const getSpecialSkillsForRole = (role: string): Skill => {
 		case 'nomad':
 			return { name: 'Family', value: 0, points: 0, category: 'ROLE' };
 		default:
-			return null;
+			return {} as Skill;
 	}
 };
 
