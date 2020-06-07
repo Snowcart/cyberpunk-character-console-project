@@ -45,6 +45,7 @@ const BottomBarWrapper = styled.div`
 	padding-top: 15px;
 	bottom: 0;
 	position: absolute;
+	box-sizing: border-box;
 `;
 
 const SaveWrapper = styled.div`
@@ -54,6 +55,7 @@ const SaveWrapper = styled.div`
 	border: 1px solid #00ccff;
 	bottom: 0;
 	float: left;
+	box-sizing: border-box;
 `;
 
 const SaveTitle = styled.div`

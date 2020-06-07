@@ -68,12 +68,13 @@ const ArmorGridWrapper = styled.div`
 	border: 1px solid #00ccff;
 	color: #00ccff;
 	min-width: 300px;
-	width: 58%;
+	width: 60%;
 	float: left;
 	top: 0;
 	height: 170px;
 	text-shadow: 2px 1px #00ffff;
 	box-shadow: 2px 1px #00ffff;
+	box-sizing: border-box;
 `;
 
 const LocationAndSp = styled.div`
@@ -103,6 +104,7 @@ const ArmorSectionDiv = styled.div`
 	min-width: 40px;
 	float: left;
 	height: 100%;
+	box-sizing: border-box;
 `;
 
 const LocationTitleDiv = styled.div`
