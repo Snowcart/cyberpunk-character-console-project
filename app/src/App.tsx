@@ -64,9 +64,9 @@ export default () => {
 					<div style={{ border: '1px solid red', gridArea: '3 / 1 / span 1 / span 2' }}>
 						<HealthBar />
 					</div>
-					<div style={{ border: '1px solid blue', gridArea: '4 / 1 / span 1 / span 1' }}>
+					<InventoryWrapper>
 						<Inventory />
-					</div>
+					</InventoryWrapper>
 					<div style={{ border: '1px solid blue', gridArea: '4 / 2 / span 1 / span 1' }}>
 						<p>Cybernetics</p>
 					</div>
@@ -92,6 +92,15 @@ const StatsWrapper = styled.div`
 const SkillsWrapper = styled.div`
 	/* border: 1px solid blue;
 	gridarea: 2 / 3 / span 3 / span 1; this is the same as the inline style, but doesn't work */
+	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+`;
+
+const InventoryWrapper = styled.div`
+	border: 1px solid blue;
+	gridarea: 4 / 1 / span 1 / span 1;
 	overflow-y: scroll;
 	&::-webkit-scrollbar {
 		display: none;

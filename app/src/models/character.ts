@@ -20,7 +20,7 @@ export default class Character {
 		cybernetics: Cybernetics[];
 		armor: Armor[];
 		weapons: Weapon[];
-		gear: InventoryRecord[];
+		gear: GearItem[];
 		eddies: number;
 	};
 
@@ -107,6 +107,12 @@ export default class Character {
 	};
 
 	lifeDetails: string;
+}
+
+export interface GearItem {
+	name: string;
+	desc: string;
+	count: number;
 }
 
 const calculateSp = (armors: Armor[]) => {
