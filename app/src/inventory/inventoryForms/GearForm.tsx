@@ -2,6 +2,7 @@ import * as React from 'react';
 import Form from '../../common/Form';
 import Character, { GearItem } from '../../models/character';
 import { characterContext } from '../../context/CharacterContext';
+import styled from 'styled-components';
 
 const GearItemForm = (props: Props) => {
 	const [gearItem, setGearItem] = React.useState({} as GearItem);
@@ -9,13 +10,22 @@ const GearItemForm = (props: Props) => {
 
 	const gearFormFields = (
 		<>
-			<input type="text" value={gearItem.name} onChange={(e) => setGearItem({ ...gearItem, name: e.target.value })} />
-			<textarea value={gearItem.desc} onChange={(e) => setGearItem({ ...gearItem, desc: e.target.value })} />
-			<input
-				type="number"
-				value={gearItem.count}
-				onChange={(e) => setGearItem({ ...gearItem, count: parseInt(e.target.value) })}
-			/>
+			<FormItem>
+				<div>Name: </div>
+				<input type="text" value={gearItem.name} onChange={(e) => setGearItem({ ...gearItem, name: e.target.value })} />
+			</FormItem>
+			<FormItem>
+				<div>Desc: </div>
+				<textarea value={gearItem.desc} onChange={(e) => setGearItem({ ...gearItem, desc: e.target.value })} />
+			</FormItem>
+			<FormItem>
+				<div># of Item: </div>
+				<input
+					type="number"
+					value={gearItem.count}
+					onChange={(e) => setGearItem({ ...gearItem, count: parseInt(e.target.value) })}
+				/>
+			</FormItem>
 		</>
 	);
 
@@ -43,3 +53,10 @@ interface Props {
 }
 
 export default GearItemForm;
+
+const FormItem = styled.div`
+	width: 100%;
+	input {
+		margin: auto;
+	}
+`;
