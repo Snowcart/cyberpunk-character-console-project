@@ -5,6 +5,7 @@ import InventoryTitle from './InventoryTitle';
 import Form from '../common/Form';
 import Character, { GearItem } from '../models/character';
 import Armor from '../models/armor';
+import GearItemForm from './inventoryForms/GearForm';
 
 const Inventory = () => {
 	const ctx = React.useContext(characterContext);
@@ -14,52 +15,7 @@ const Inventory = () => {
 		setAdding(!adding);
 	};
 
-	React.useEffect(() => {
-		const c = ctx.character;
-		if (!c.inventory) {
-			c.inventory = {} as Character['inventory'];
-			ctx.setCharacter({ ...c });
-		}
-		console.log(ctx.character);
-	}, []);
-
 	const [selected, setSelected] = React.useState(null as 'armor' | 'weapons' | 'gear');
-
-	// GEAR FORM -----------------------------------------------
-	const [gearItem, setGearItem] = React.useState({} as GearItem);
-
-	const gearFormFields = (
-		<>
-			<input type="text" value={gearItem.name} onChange={(e) => setGearItem({ ...gearItem, name: e.target.value })} />
-			<textarea value={gearItem.desc} onChange={(e) => setGearItem({ ...gearItem, desc: e.target.value })} />
-			<input
-				type="number"
-				value={gearItem.count}
-				onChange={(e) => setGearItem({ ...gearItem, count: parseInt(e.target.value) })}
-			/>
-		</>
-	);
-
-	const gearVal = () => {
-		if (gearItem.name && gearItem.desc && gearItem.count) return true;
-		return 'Form is not valid.';
-	};
-
-	const gearSubmit = () => {
-		const chr = ctx.character;
-		if (!chr.inventory.gear) chr.inventory.gear = [];
-		chr.inventory.gear.push(gearItem);
-		ctx.setCharacter({ ...chr });
-		setSelected(null);
-		setGearItem({} as GearItem);
-		toggleAddItem();
-	};
-
-	const gearForm = (
-		<Form formFields={gearFormFields} submitButtonText="Add" validation={gearVal} onSubmit={gearSubmit} />
-	);
-
-	// END GEAR FORM -----------------------------------------------------------------
 
 	const AddItemForm = (
 		<>
@@ -80,7 +36,7 @@ const Inventory = () => {
 					<SelectButton onClick={() => setSelected('gear')}>gear</SelectButton>
 				)}
 			</AddItemWrapper>
-			{selected === 'gear' && gearForm}
+			{selected === 'gear' && <GearItemForm setSelected={setSelected} toggleAddItem={toggleAddItem} />}
 		</>
 	);
 
@@ -90,6 +46,12 @@ const Inventory = () => {
 		ctx.character.inventory && itemCategories.map((c) => ctx.character.inventory[c] && ctx.character.inventory[c]);
 
 	const [sortedInventoryItems, setSortedInventoryItems] = React.useState(defaultInventoryItems);
+
+	React.useEffect(() => {
+		const defaultInventoryItems =
+			ctx.character.inventory && itemCategories.map((c) => ctx.character.inventory[c] && ctx.character.inventory[c]);
+		setSortedInventoryItems(defaultInventoryItems);
+	}, [ctx.character.inventory?.gear, ctx.character.inventory?.weapons, ctx.character.inventory?.armor]);
 
 	const InventoryItems = sortedInventoryItems?.map((c) => {
 		return c?.length > 0 ? (

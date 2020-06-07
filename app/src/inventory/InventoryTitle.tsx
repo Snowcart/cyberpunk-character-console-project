@@ -48,7 +48,7 @@ const InventoryTitle = () => {
 
 	const InventoryTitle = (
 		<GearTitleWrapper>
-			<h1>GEAR</h1>
+			<h1>INVTRY</h1>
 			<MoneyWrapper>
 				<Eddies>€${ctx.character.inventory?.eddies ? ctx.character.inventory.eddies : 0}</Eddies>
 				{MoneyInput}

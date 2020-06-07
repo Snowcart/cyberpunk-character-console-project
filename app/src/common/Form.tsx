@@ -4,9 +4,7 @@ import styled from 'styled-components';
 const Form = (props: FormProps) => {
 	const [validationMessage, setValidationMessage] = React.useState(null as string);
 	const handleFormSubmit = () => {
-		console.log('running form submit');
 		const validationReturn = props.validation();
-		console.log(validationReturn);
 		if (typeof validationReturn === 'string') {
 			setValidationMessage(validationReturn);
 			return;
