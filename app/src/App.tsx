@@ -13,7 +13,6 @@ export default () => {
 	const character = useCharacter();
 
 	const GlobalStyle = createGlobalStyle`
-	@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;1,900&display=swap');
 
 
 	html {
