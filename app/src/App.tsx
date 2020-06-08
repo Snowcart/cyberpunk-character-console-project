@@ -5,7 +5,7 @@ import { useCharacter } from './hooks/useCharacter';
 import { characterContext } from './context/CharacterContext';
 import Stats from './stats/Stats';
 import Saves from './saves/Saves';
-import Skills from './skills/skills';
+import Skills from './skills/Skills';
 import HealthBar from './health/Health';
 import Inventory from './inventory/Inventory';
 
