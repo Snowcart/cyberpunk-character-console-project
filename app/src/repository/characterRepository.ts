@@ -1,4 +1,4 @@
-import Character from 'src/models/character';
+import Character from 'src/models/Character';
 
 const characterKey = 'character';
 

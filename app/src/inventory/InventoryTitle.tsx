@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { characterContext } from '../context/CharacterContext';
-import Character from '../models/character';
+import Character from '../models/Character';
 import styled from 'styled-components';
 
 const InventoryTitle = () => {

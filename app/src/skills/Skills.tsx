@@ -1,6 +1,6 @@
 import { characterContext } from '../context/CharacterContext';
 import { useContext } from 'react';
-import Character from '../models/character';
+import Character from '../models/Character';
 import { Skill, getSkillsForCharacters, getSpecialSkillsForRole } from '../models/Skill';
 import { getEmpathy } from '../stats/Stats';
 import * as React from 'react';

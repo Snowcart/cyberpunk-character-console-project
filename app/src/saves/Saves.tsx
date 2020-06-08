@@ -1,7 +1,7 @@
 import { characterContext } from '../context/CharacterContext';
 import * as React from 'react';
 import styled from 'styled-components';
-import Character from '../models/character';
+import Character from '../models/Character';
 import ArmorGrid from './ArmorGrid';
 
 const Saves = () => {

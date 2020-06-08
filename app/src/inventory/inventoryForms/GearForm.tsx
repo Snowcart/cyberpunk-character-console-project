@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Form from '../../common/Form';
-import Character, { GearItem } from '../../models/character';
+import Character, { GearItem } from '../../models/Character';
 import { characterContext } from '../../context/CharacterContext';
 import styled from 'styled-components';
 

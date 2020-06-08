@@ -3,7 +3,7 @@ import * as React from 'react';
 import { characterContext } from '../../context/CharacterContext';
 import Dropdown from 'react-dropdown';
 import Weapon from '../../models/weapon';
-import Character from '../../models/character';
+import Character from '../../models/Character';
 import Form from '../../common/Form';
 
 const WeaponForm = (props: FormProps) => {

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { CharacterContext } from '../context/CharacterContext';
-import Character from '../models/character';
+import Character from '../models/Character';
 import { getCharacterFromStorage, setCharacterInStorage } from '../repository/characterRepository';
 
 export const useCharacter = (): CharacterContext => {

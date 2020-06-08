@@ -3,7 +3,7 @@ import { characterContext } from '../context/CharacterContext';
 import styled from 'styled-components';
 import InventoryTitle from './InventoryTitle';
 import Form from '../common/Form';
-import Character, { GearItem } from '../models/character';
+import Character, { GearItem } from '../models/Character';
 import Armor from '../models/armor';
 import GearItemForm from './inventoryForms/GearForm';
 import WeaponForm from './inventoryForms/WeaponForm';

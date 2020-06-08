@@ -3,7 +3,7 @@ import * as React from 'react';
 import Stats from '../models/stats';
 import styled from 'styled-components';
 import Stat from './Stat';
-import Character from '../models/character';
+import Character from '../models/Character';
 
 const Stats = () => {
 	const characterCtx = React.useContext(characterContext);
