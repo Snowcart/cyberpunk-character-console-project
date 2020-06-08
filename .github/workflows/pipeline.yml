@@ -23,8 +23,8 @@ jobs:
 
       - name: Build
         run: |
-          npm install --prefix src/ui-web
-          npm run webpack-prod --prefix src/ui-web
+          npm install --prefix app
+          npm run webpack-prod --prefix app
 
       - name: Deploy
         uses: jakejarvis/s3-sync-action@master
