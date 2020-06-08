@@ -78,7 +78,7 @@ const Inventory = () => {
 					<AddButton onClick={toggleAddItem}>Add</AddButton>
 				)}
 				<InputWrapper>
-					<Input />
+					<Input placeholder="< search >" />
 				</InputWrapper>
 			</TopWrapper>
 			{adding ? AddItemForm : InventoryItems}
@@ -104,6 +104,7 @@ const Input = styled.input`
 	height: 40px;
 	font-size: 18px;
 	box-sizing: border-box;
+	border: 1px solid #00ccff;
 `;
 
 const ItemWrapper = styled.div`

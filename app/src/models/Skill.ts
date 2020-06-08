@@ -17,7 +17,7 @@ export const getSpecialSkillsForRole = (role: string): Skill => {
 			return { name: 'Streetdeal', value: 0, points: 0, category: 'ROLE' };
 		case 'rockerboy':
 		case 'rockergirl':
-		case 'rockerthey':
+		case 'rockerperson':
 			return { name: 'Charismatic Leadership', value: 0, points: 0, category: 'ROLE' };
 		case 'solo':
 			return { name: 'Combat Sense', value: 0, points: 0, category: 'ROLE' };
