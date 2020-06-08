@@ -50,7 +50,7 @@ const ArmorGrid = () => {
 		<ArmorGridWrapper>
 			<LocationAndSp>
 				<ArmorTitle>
-					<div>Location</div>
+					<div>LCTN</div>
 				</ArmorTitle>
 				{getLocationSection()}
 			</LocationAndSp>

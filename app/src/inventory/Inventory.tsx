@@ -6,6 +6,7 @@ import Form from '../common/Form';
 import Character, { GearItem } from '../models/character';
 import Armor from '../models/armor';
 import GearItemForm from './inventoryForms/GearForm';
+import WeaponForm from './inventoryForms/WeaponForm';
 
 const Inventory = () => {
 	const ctx = React.useContext(characterContext);
@@ -37,6 +38,7 @@ const Inventory = () => {
 				)}
 			</AddItemWrapper>
 			{selected === 'gear' && <GearItemForm setSelected={setSelected} toggleAddItem={toggleAddItem} />}
+			{selected === 'weapons' && <WeaponForm setSelected={setSelected} toggleAddItem={toggleAddItem} />}
 		</>
 	);
 
@@ -56,14 +58,9 @@ const Inventory = () => {
 	const InventoryItems = sortedInventoryItems?.map((c) => {
 		return c?.length > 0 ? (
 			<>
-				<div>{c[0] && getTypeName(c[0])}</div>
+				<Cat>{c[0] && getTypeName(c[0])}</Cat>
 				{(c as any)?.map((s: any) => {
-					return (
-						<div>
-							<span>{s.name}</span>
-							<span>{s.desc}</span>
-						</div>
-					);
+					return <ItemWrapper>{renderItem(s, getTypeName(s))}</ItemWrapper>;
 				})}
 			</>
 		) : null;
@@ -84,10 +81,26 @@ const Inventory = () => {
 
 export default Inventory;
 
-const InventoryItemss = styled.div`
-	width: 100%;
+const ItemWrapper = styled.div`
+	/* width: 100%;
 	background-color: blue;
-	height: 600px;
+	height: 600px; */
+	width: 100%;
+	text-align: left;
+`;
+
+const Cat = styled.div`
+	width: 100%;
+	background-color: #00ccff;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	font-size: 18px;
+	color: #2e2e2e;
+`;
+
+const ItemSection = styled.span`
+	margin-left: 5px;
+	margin-right: 5px;
 `;
 const AddForm = styled.div`
 	width: 100%;
@@ -129,4 +142,25 @@ const getTypeName = (item: any) => {
 	if (item.type) return 'WEAPON';
 	if (item.stoppingPower) return 'ARMOR';
 	return 'UNKNOWN';
+};
+
+const renderItem = (item: any, type: string) => {
+	console.log(item);
+	console.log(type);
+	if (type === 'GEAR')
+		return (
+			<div>
+				<ItemSection>{item.name}</ItemSection>
+				<ItemSection>{item.desc}</ItemSection>
+			</div>
+		);
+	if (type === 'WEAPON')
+		return (
+			<div>
+				<ItemSection>{item.name}</ItemSection>
+				<ItemSection>{item.type}</ItemSection>
+				<ItemSection>{item.concealability}</ItemSection>
+			</div>
+		);
+	if (type === 'ARMOR') return <div></div>;
 };

@@ -4,7 +4,7 @@ import Character, { GearItem } from '../../models/character';
 import { characterContext } from '../../context/CharacterContext';
 import styled from 'styled-components';
 
-const GearItemForm = (props: Props) => {
+const GearItemForm = (props: FormProps) => {
 	const [gearItem, setGearItem] = React.useState({} as GearItem);
 	const ctx = React.useContext(characterContext);
 
@@ -47,14 +47,14 @@ const GearItemForm = (props: Props) => {
 	return <Form formFields={gearFormFields} submitButtonText="Add" validation={gearVal} onSubmit={gearSubmit} />;
 };
 
-interface Props {
+export interface FormProps {
 	setSelected: (value: any) => void;
 	toggleAddItem: () => void;
 }
 
 export default GearItemForm;
 
-const FormItem = styled.div`
+export const FormItem = styled.div`
 	width: 100%;
 	input {
 		margin: auto;

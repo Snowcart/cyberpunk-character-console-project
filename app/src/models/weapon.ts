@@ -12,6 +12,6 @@ export default interface Weapon extends Item {
 	accuracy: number;
 	reliablility: 'VR' | 'ST' | 'UR';
 	armorPeircing?: string; // Todo: string literal of AP types
-	isSmartgun?: boolean;
+	isSmartgun: boolean;
 	equipped: boolean;
 }

@@ -13,16 +13,19 @@ export default () => {
 	const character = useCharacter();
 
 	const GlobalStyle = createGlobalStyle`
+	@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;1,900&display=swap');
+
+
 	html {
 		height: 100%;
 	}
 
 	body {
+		font-family: 'Source Code Pro', monospace;
 		height: 100%;
 		margin: 0;
 		background-color: #2e2e2e;
 		color: #00ccff;
-		text-shadow: 2px 1px #00ffff;
 	}
 
 	input {
@@ -93,6 +96,7 @@ const SkillsWrapper = styled.div`
 	/* border: 1px solid blue;
 	gridarea: 2 / 3 / span 3 / span 1; this is the same as the inline style, but doesn't work */
 	overflow-y: scroll;
+	overflow-x: hidden;
 	&::-webkit-scrollbar {
 		display: none;
 	}
