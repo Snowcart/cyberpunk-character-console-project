@@ -16,9 +16,6 @@ const Skills = () => {
 	const [fuzzySearch, setFuzzySearch] = React.useState(null as string);
 
 	React.useEffect(() => {
-		console.log(ctx.character.role);
-		console.log(getSpecialSkillsForRole(ctx.character.role));
-		console.log(ctx.character.specialSkill);
 		ctx.setCharacter({
 			...ctx.character,
 			specialSkill:
@@ -50,15 +47,10 @@ const Skills = () => {
 	}, [fuzzySearch, ctx.character.role]);
 
 	const editSkill = (e: any, name: string) => {
-		console.log(e.target.value);
-		console.log(name);
 		const value = e.target.value ? (parseInt(e.target.value) > 10 ? 10 : parseInt(e.target.value)) : null;
 		const char = ctx.character;
-		console.log(char.specialSkill.name);
 		if (char.specialSkill?.name === name) {
-			console.log('updating spec');
 			char.specialSkill.points = value;
-			console.log(char.specialSkill.points);
 		} else char.skills.find((x) => x.name === name).points = value;
 		ctx.setCharacter({
 			...ctx.character
