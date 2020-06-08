@@ -76,7 +76,7 @@ const Skills = () => {
 			</>
 		) : (
 			<>
-				{s.name}: <strong>{`[${s.points}/${calculatedValue ? calculatedValue : s.points}]`}</strong>
+				{s.name}: <strong>{`${s.points} [${calculatedValue ? calculatedValue : s.points}]`}</strong>
 			</>
 		);
 	};

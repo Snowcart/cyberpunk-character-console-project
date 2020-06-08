@@ -205,3 +205,25 @@ const renderItem = (item: any, type: string) => {
 			</ArmorGrid>
 		);
 };
+
+// const getFilteredInventory = (ivy: Character['inventory'], search: string) => {
+// 	const lowercaseSearch = search ? search.toLowerCase() : null;
+// 	if (lowercaseSearch) {
+// 		const armor = ivy.armor;
+// 		const weapons = ivy.weapons;
+// 		const gear = ivy.gear;
+
+// 		const farmor = armor.filter(
+// 			(x) => x?.name?.toLowerCase().includes(lowercaseSearch) || x?.stoppingPower.toString().includes(lowercaseSearch)
+// 		);
+
+// 		const fweapons = weapons.filter(x => x?.name?.toLowerCase().includes(lowercaseSearch) || x?.type.toLowerCase().includes(lowercaseSearch));
+
+// 		const fgear = gear.filter(x => x?.name?.toLow )
+// 	}
+// 	return lowercaseSearch
+// 		? ivy.filter(
+// 				(x) => x?.name?.toLowerCase().includes(lowercaseSearch) || x?.category?.toLowerCase().includes(lowercaseSearch)
+// 		  )
+// 		: skills;
+// };
