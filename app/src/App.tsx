@@ -56,7 +56,7 @@ export default () => {
 						<Title />
 					</div>
 					<StatsWrapper>
-						<div style={{ height: '100%', minHeight: '310px', position: 'relative' }}>
+						<div style={{ height: '100%', minHeight: '300px', position: 'relative' }}>
 							<Stats />
 							<Saves />
 						</div>

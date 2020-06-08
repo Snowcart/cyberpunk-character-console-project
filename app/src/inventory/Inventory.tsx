@@ -7,6 +7,7 @@ import Character, { GearItem } from '../models/Character';
 import Armor from '../models/armor';
 import GearItemForm from './inventoryForms/GearForm';
 import WeaponForm from './inventoryForms/WeaponForm';
+import ArmorForm, { getArmorType } from './inventoryForms/ArmorForm';
 
 const Inventory = () => {
 	const ctx = React.useContext(characterContext);
@@ -39,6 +40,7 @@ const Inventory = () => {
 			</AddItemWrapper>
 			{selected === 'gear' && <GearItemForm setSelected={setSelected} toggleAddItem={toggleAddItem} />}
 			{selected === 'weapons' && <WeaponForm setSelected={setSelected} toggleAddItem={toggleAddItem} />}
+			{selected === 'armor' && <ArmorForm setSelected={setSelected} toggleAddItem={toggleAddItem} />}
 		</>
 	);
 
@@ -82,9 +84,6 @@ const Inventory = () => {
 export default Inventory;
 
 const ItemWrapper = styled.div`
-	/* width: 100%;
-	background-color: blue;
-	height: 600px; */
 	width: 100%;
 	text-align: left;
 `;
@@ -162,5 +161,12 @@ const renderItem = (item: any, type: string) => {
 				<ItemSection>{item.concealability}</ItemSection>
 			</div>
 		);
-	if (type === 'ARMOR') return <div></div>;
+	if (type === 'ARMOR')
+		return (
+			<div>
+				<ItemSection>{item.name}</ItemSection>
+				<ItemSection>{item.stoppingPower}</ItemSection>
+				<ItemSection>{getArmorType(item)}</ItemSection>
+			</div>
+		);
 };
