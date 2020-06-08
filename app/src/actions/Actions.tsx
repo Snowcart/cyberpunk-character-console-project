@@ -1,12 +1,31 @@
 import { characterContext } from '../context/CharacterContext';
 import * as React from 'react';
 import styled from 'styled-components';
+import Stat from '../stats/Stat';
 
 const Actions = () => {
 	const ctx = React.useContext(characterContext);
 	const weapons = ctx.character?.inventory?.weapons;
 
-	// add in RUN/LEAP/LIFT
+	const actionStatValues = ctx.character?.stats?.movementAbility
+		? getActionStats(ctx.character.stats.movementAbility)
+		: null;
+
+	const statArray = actionStatValues
+		? [
+				{ title: 'RUN', value: actionStatValues.run },
+				{ title: 'LEAP', value: actionStatValues.leap },
+				{ title: 'LIFT', value: actionStatValues.lift }
+		  ]
+		: null;
+
+	const actionStats = statArray ? (
+		<>
+			{statArray.map((s) => {
+				return <Stat title={s.title} number={s.value} />;
+			})}
+		</>
+	) : null;
 
 	const weaponsRender = (
 		<>
@@ -27,7 +46,12 @@ const Actions = () => {
 			})}
 		</>
 	);
-	return weapons ? <ActionWrapper>{weaponsRender}</ActionWrapper> : null;
+	return (
+		<div>
+			{actionStats ? actionStats : null}
+			{weapons ? <ActionWrapper>{weaponsRender}</ActionWrapper> : null}
+		</div>
+	);
 };
 
 export default Actions;
@@ -63,3 +87,11 @@ const WeaponsLegend = (
 		<div>RANGE</div>
 	</WeaponLegend>
 );
+
+const getActionStats = (ma: number) => {
+	const run = ma * 3;
+	const leap = (ma * 3) / 4;
+	const lift = ma * 40;
+
+	return { run, leap, lift };
+};

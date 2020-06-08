@@ -10,7 +10,7 @@ const Stat = (props: Props) => {
 		characterCtx.setCharacter({
 			// TODO: this could use a reducer
 			...characterCtx.character,
-			stats: { ...characterCtx.character?.stats, [key]: value }
+			stats: { ...characterCtx.character?.stats, [key]: parseInt(value) }
 		});
 	};
 

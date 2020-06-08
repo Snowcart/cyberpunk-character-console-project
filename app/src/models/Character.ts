@@ -25,9 +25,6 @@ export default class Character {
 	};
 
 	// move these out
-	getRun = () => this.stats.movementAbility * 3;
-	getLeap = () => (this.stats.movementAbility * 3) / 4;
-	getLift = () => this.stats.movementAbility * 40;
 	getBTM = () => {
 		const body = this.stats.body;
 		if (body <= 2) return 0;
