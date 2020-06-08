@@ -8,6 +8,7 @@ import Saves from './saves/Saves';
 import Skills from './skills/Skills';
 import HealthBar from './health/Health';
 import Inventory from './inventory/Inventory';
+import Actions from './actions/Actions';
 
 export default () => {
 	const character = useCharacter();
@@ -61,7 +62,7 @@ export default () => {
 						</div>
 					</StatsWrapper>
 					<div style={{ border: '1px solid purple', gridArea: '2 / 2 / span 1 / span 1' }}>
-						<p>Actions</p>
+						<Actions />
 					</div>
 					<div style={{ border: '1px solid red', gridArea: '3 / 1 / span 1 / span 2' }}>
 						<HealthBar />

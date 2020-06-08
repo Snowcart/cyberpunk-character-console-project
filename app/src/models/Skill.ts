@@ -58,7 +58,7 @@ export const getSkillsForCharacters = () => {
 		{ name: 'Seduction', value: 0, points: 0, category: 'EMPATHY' },
 		{ name: 'Social', value: 0, points: 0, category: 'EMPATHY' },
 		{ name: 'Persuasion & Fast Talk', value: 0, points: 0, category: 'EMPATHY' },
-		{ name: 'Preform', value: 0, points: 0, category: 'EMPATHY' },
+		{ name: 'Perform', value: 0, points: 0, category: 'EMPATHY' },
 		{ name: 'Accounting', value: 0, points: 0, category: 'INT' },
 		{ name: 'Anthropology', value: 0, points: 0, category: 'INT' },
 		{ name: 'Awareness/Notice', value: 0, points: 0, category: 'INT' },
