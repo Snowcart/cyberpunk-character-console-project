@@ -71,17 +71,40 @@ const Inventory = () => {
 	return (
 		<>
 			<InventoryTitle />
-			{adding ? (
-				<CancelButton onClick={toggleAddItem}>Cancel</CancelButton>
-			) : (
-				<AddButton onClick={toggleAddItem}>Add</AddButton>
-			)}
+			<TopWrapper>
+				{adding ? (
+					<CancelButton onClick={toggleAddItem}>Cancel</CancelButton>
+				) : (
+					<AddButton onClick={toggleAddItem}>Add</AddButton>
+				)}
+				<InputWrapper>
+					<Input />
+				</InputWrapper>
+			</TopWrapper>
 			{adding ? AddItemForm : InventoryItems}
 		</>
 	);
 };
 
 export default Inventory;
+
+const TopWrapper = styled.div`
+	width: 100%;
+	height: 40px;
+	box-sizing: border-box;
+`;
+
+const InputWrapper = styled.div`
+	float: left;
+	width: calc(100% - 100px);
+`;
+
+const Input = styled.input`
+	width: 100%;
+	height: 40px;
+	font-size: 18px;
+	box-sizing: border-box;
+`;
 
 const ItemWrapper = styled.div`
 	width: 100%;
@@ -98,17 +121,13 @@ const Cat = styled.div`
 `;
 
 const ItemSection = styled.span``;
-const AddForm = styled.div`
-	width: 100%;
-	background-color: purple;
-	height: 500px;
-`;
 
 const AddButton = styled.div`
 	width: 100px;
-	height: 50px;
+	height: 40px;
 	background-color: green;
 	cursor: pointer;
+	float: left;
 `;
 const CancelButton = styled(AddButton)`
 	background-color: red;
