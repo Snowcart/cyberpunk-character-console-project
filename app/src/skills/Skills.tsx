@@ -16,8 +16,29 @@ const Skills = () => {
 	const [fuzzySearch, setFuzzySearch] = React.useState(null as string);
 
 	React.useEffect(() => {
+		console.log(ctx.character.role);
+		console.log(getSpecialSkillsForRole(ctx.character.role));
+		console.log(ctx.character.specialSkill);
+		ctx.setCharacter({
+			...ctx.character,
+			specialSkill:
+				getSpecialSkillsForRole(ctx.character.role)?.name !== null
+					? ctx.character.specialSkill.name === getSpecialSkillsForRole(ctx.character.role)?.name
+						? ctx.character.specialSkill
+						: getSpecialSkillsForRole(ctx.character.role)
+					: getSpecialSkillsForRole(ctx.character.role)
+		});
+	}, [ctx.character.role]);
+
+	React.useEffect(() => {
 		const updatedFilteredSkills = getFilteredSkills(
-			skills.concat(ctx.character.role ? getSpecialSkillsForRole(ctx.character.role) : ({} as Skill)),
+			skills.concat(
+				ctx.character.specialSkill.name === getSpecialSkillsForRole(ctx.character.role)?.name
+					? ctx.character.specialSkill
+					: ctx.character.role
+					? getSpecialSkillsForRole(ctx.character.role)
+					: ({} as Skill)
+			),
 			fuzzySearch
 		);
 		if (!ctx.character.skills) ctx.setCharacter({ ...ctx.character, skills: skills });
@@ -28,14 +49,17 @@ const Skills = () => {
 		);
 	}, [fuzzySearch, ctx.character.role]);
 
-	React.useEffect(() => {
-		ctx.setCharacter({ ...ctx.character, specialSkill: getSpecialSkillsForRole(ctx.character.role) });
-	}, [ctx.character.role]);
-
 	const editSkill = (e: any, name: string) => {
-		const value = e.target.value ? (e.target.value > 10 ? 10 : e.target.value) : 0;
+		console.log(e.target.value);
+		console.log(name);
+		const value = e.target.value ? (parseInt(e.target.value) > 10 ? 10 : parseInt(e.target.value)) : null;
 		const char = ctx.character;
-		char.skills.find((x) => x.name === name).points = parseInt(value);
+		console.log(char.specialSkill.name);
+		if (char.specialSkill?.name === name) {
+			console.log('updating spec');
+			char.specialSkill.points = value;
+			console.log(char.specialSkill.points);
+		} else char.skills.find((x) => x.name === name).points = value;
 		ctx.setCharacter({
 			...ctx.character
 		});
