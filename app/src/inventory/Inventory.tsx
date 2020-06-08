@@ -97,10 +97,7 @@ const Cat = styled.div`
 	color: #2e2e2e;
 `;
 
-const ItemSection = styled.span`
-	margin-left: 5px;
-	margin-right: 5px;
-`;
+const ItemSection = styled.span``;
 const AddForm = styled.div`
 	width: 100%;
 	background-color: purple;
@@ -136,6 +133,24 @@ const AddItemWrapper = styled.div`
 	width: 100%;
 `;
 
+const ItemGrid = styled.div`
+	display: grid;
+	width: 100%;
+	margin-bottom: 9px;
+	grid-template-columns: 30% 70%;
+	span {
+		border: 1px solid green;
+	}
+`;
+
+const WeaponGrid = styled(ItemGrid)`
+	grid-template-columns: 40% 40% 20%;
+`;
+
+const ArmorGrid = styled(ItemGrid)`
+	grid-template-columns: 40% 20% 40%;
+`;
+
 const getTypeName = (item: any) => {
 	if (item.count) return 'GEAR';
 	if (item.type) return 'WEAPON';
@@ -148,25 +163,25 @@ const renderItem = (item: any, type: string) => {
 	console.log(type);
 	if (type === 'GEAR')
 		return (
-			<div>
+			<ItemGrid>
 				<ItemSection>{item.name}</ItemSection>
 				<ItemSection>{item.desc}</ItemSection>
-			</div>
+			</ItemGrid>
 		);
 	if (type === 'WEAPON')
 		return (
-			<div>
+			<WeaponGrid>
 				<ItemSection>{item.name}</ItemSection>
 				<ItemSection>{item.type}</ItemSection>
 				<ItemSection>{item.concealability}</ItemSection>
-			</div>
+			</WeaponGrid>
 		);
 	if (type === 'ARMOR')
 		return (
-			<div>
+			<ArmorGrid>
 				<ItemSection>{item.name}</ItemSection>
 				<ItemSection>{item.stoppingPower}</ItemSection>
 				<ItemSection>{getArmorType(item)}</ItemSection>
-			</div>
+			</ArmorGrid>
 		);
 };
