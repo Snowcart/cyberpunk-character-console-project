@@ -164,7 +164,7 @@ const getFilteredSkills = (skills: Skill[], search: string) => {
 	const lowercaseSearch = search ? search.toLowerCase() : null;
 	return lowercaseSearch
 		? skills.filter(
-				(x) => x.name?.toLowerCase().includes(lowercaseSearch) || x.category?.toLowerCase().includes(lowercaseSearch)
+				(x) => x?.name?.toLowerCase().includes(lowercaseSearch) || x?.category?.toLowerCase().includes(lowercaseSearch)
 		  )
 		: skills;
 };
