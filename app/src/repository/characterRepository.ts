@@ -4,7 +4,7 @@ const characterKey = 'character';
 
 const getCharacterFromStorage = (): Character => {
 	const rawCharacterData = localStorage.getItem(characterKey);
-	return JSON.parse(rawCharacterData);
+	if (rawCharacterData) return JSON.parse(rawCharacterData);
 
 	if (!rawCharacterData) return {} as Character;
 	try {
