@@ -20,7 +20,7 @@ const Skills = () => {
 			...ctx.character,
 			specialSkill:
 				getSpecialSkillsForRole(ctx.character.role)?.name !== null
-					? ctx.character.specialSkill.name === getSpecialSkillsForRole(ctx.character.role)?.name
+					? ctx.character.specialSkill?.name === getSpecialSkillsForRole(ctx.character.role)?.name
 						? ctx.character.specialSkill
 						: getSpecialSkillsForRole(ctx.character.role)
 					: getSpecialSkillsForRole(ctx.character.role)
@@ -30,7 +30,7 @@ const Skills = () => {
 	React.useEffect(() => {
 		const updatedFilteredSkills = getFilteredSkills(
 			skills.concat(
-				ctx.character.specialSkill.name === getSpecialSkillsForRole(ctx.character.role)?.name
+				ctx.character.specialSkill?.name === getSpecialSkillsForRole(ctx.character.role)?.name
 					? ctx.character.specialSkill
 					: ctx.character.role
 					? getSpecialSkillsForRole(ctx.character.role)
@@ -41,7 +41,7 @@ const Skills = () => {
 		if (!ctx.character.skills) ctx.setCharacter({ ...ctx.character, skills: skills });
 		setGroupSkills(
 			categories.map((c) => {
-				return updatedFilteredSkills.filter((s) => s.category === c);
+				return updatedFilteredSkills.filter((s) => s?.category === c);
 			})
 		);
 	}, [fuzzySearch, ctx.character.role]);
