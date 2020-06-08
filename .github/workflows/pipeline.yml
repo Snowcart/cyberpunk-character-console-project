@@ -1,0 +1,38 @@
+name: Upload Website
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  NODE_VERSION: "12"
+
+jobs:
+  build-and-deploy:
+    name: "Build and deploy"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Build
+        run: |
+          npm install --prefix src/ui-web
+          npm run webpack-prod --prefix src/ui-web
+
+      - name: Deploy
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "ap-southeast-2"
+          SOURCE_DIR: "src/ui-web/dist"
