@@ -46,10 +46,10 @@ const ArmorForm = (props: FormProps) => {
 			<FormItem>
 				<label>
 					<input
-						type="radio"
+						type="checkbox"
 						checked={armorItem.isHard}
 						onClick={() => {
-							onChange('isSmartGun', armorItem.isHard !== null ? !armorItem.isHard : true);
+							onChange('isHard', armorItem.isHard !== null ? !armorItem.isHard : true);
 						}}
 					/>
 					is Hard?

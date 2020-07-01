@@ -31,9 +31,12 @@ const Actions = () => {
 		<>
 			{WeaponsLegend}
 			{weapons?.map((w) => {
+				console.log(w.isSmartgun);
 				return (
 					<WeaponGrid>
-						<div>{w.name}</div>
+						<div>
+							{w.name} isSmartgun: <input type="checkbox" checked={w.isSmartgun} onClick={null} />
+						</div>
 						<div>{w.type}</div>
 						<div>{w.accuracy}</div>
 						<div>{w.damage}</div>

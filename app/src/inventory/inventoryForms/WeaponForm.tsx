@@ -66,7 +66,7 @@ const WeaponForm = (props: FormProps) => {
 				/>
 			</FormItem>
 			<FormItem>
-				<label>Reliablility: </label>
+				<label>Reliability: </label>
 				<Dropdown
 					options={reliability}
 					value={weaponItem.reliablility}
@@ -76,10 +76,10 @@ const WeaponForm = (props: FormProps) => {
 			<FormItem>
 				<label>
 					<input
-						type="radio"
+						type="checkbox"
 						checked={weaponItem.isSmartgun}
 						onClick={() => {
-							onChange('isSmartGun', weaponItem.isSmartgun !== null ? !weaponItem.isSmartgun : true);
+							onChange('isSmartgun', weaponItem.isSmartgun !== null ? !weaponItem.isSmartgun : true);
 						}}
 					/>
 					- is Smartgun?
