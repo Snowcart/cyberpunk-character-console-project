@@ -89,7 +89,6 @@ const WeaponForm = (props: FormProps) => {
 	);
 
 	const weaponVal = () => {
-		console.log(weaponItem);
 		if (
 			weaponItem.name &&
 			weaponItem.type &&

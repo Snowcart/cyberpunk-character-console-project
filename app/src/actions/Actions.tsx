@@ -31,11 +31,11 @@ const Actions = () => {
 		<>
 			{WeaponsLegend}
 			{weapons?.map((w) => {
-				console.log(w.isSmartgun);
 				return (
 					<WeaponGrid>
+						<div>{w.name}</div>
 						<div>
-							{w.name} isSmartgun: <input type="checkbox" checked={w.isSmartgun} onClick={null} />
+							Smartgun: <input type="checkbox" checked={w.isSmartgun ? true : false} onClick={null} />
 						</div>
 						<div>{w.type}</div>
 						<div>{w.accuracy}</div>
@@ -63,7 +63,7 @@ const WeaponGrid = styled.div`
 	width: 100%;
 	display: grid;
 	margin-bottom: 15px;
-	grid-template-columns: 25% 15% 8% 20% 8% 8% 8% 8%;
+	grid-template-columns: 25% 13% 12% 8% 10% 8% 8% 8% 8%;
 	div {
 		box-sizing: border-box;
 		border: 1px solid green;
@@ -81,6 +81,7 @@ const ActionWrapper = styled.div`
 const WeaponsLegend = (
 	<WeaponLegend>
 		<div>NAME</div>
+		<div>SMRTGUN</div>
 		<div>TYPE</div>
 		<div>WA</div>
 		<div>DMG</div>
