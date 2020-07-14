@@ -19,3 +19,11 @@ export default interface Cybernetics extends Item {
 type Targets = keyof Stats | keyof typeof skills | ExtraTargets;
 
 type ExtraTargets = 'Initiative' | 'Leap' | 'Run' | 'Smartgun' | 'Lift';
+
+export interface Cybernetic extends Item {
+	type: string;
+	idCode: string;
+	humanityLoss: number;
+	description: string;
+	requiresPrereq: boolean;
+}

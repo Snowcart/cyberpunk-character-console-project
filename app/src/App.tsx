@@ -9,6 +9,7 @@ import Skills from './skills/Skills';
 import HealthBar from './health/Health';
 import Inventory from './inventory/Inventory';
 import Actions from './actions/Actions';
+import { Cybernetics } from './cybernetics/Cybernetics';
 
 export default () => {
 	const character = useCharacter();
@@ -71,7 +72,7 @@ export default () => {
 						<Inventory />
 					</InventoryWrapper>
 					<div style={{ border: '1px solid blue', gridArea: '4 / 2 / span 1 / span 1' }}>
-						<p>Cybernetics</p>
+						<Cybernetics />
 					</div>
 					<SkillsWrapper style={{ border: '1px solid blue', gridArea: '2 / 3 / span 3 / span 1' }}>
 						<Skills />

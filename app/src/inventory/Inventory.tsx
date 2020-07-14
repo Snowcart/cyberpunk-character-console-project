@@ -12,6 +12,7 @@ import ArmorForm, { getArmorType } from './inventoryForms/ArmorForm';
 const Inventory = () => {
 	const ctx = React.useContext(characterContext);
 	const [adding, setAdding] = React.useState(false);
+	const [filterSearch, setFilterSearch] = React.useState<string>('');
 
 	const toggleAddItem = () => {
 		setAdding(!adding);
@@ -57,6 +58,10 @@ const Inventory = () => {
 		setSortedInventoryItems(defaultInventoryItems);
 	}, [ctx.character.inventory?.gear, ctx.character.inventory?.weapons, ctx.character.inventory?.armor]);
 
+	React.useEffect(() => {
+		// do nothing for now
+	}, [filterSearch]);
+
 	const InventoryItems = sortedInventoryItems?.map((c) => {
 		return c?.length > 0 ? (
 			<>
@@ -88,18 +93,18 @@ const Inventory = () => {
 
 export default Inventory;
 
-const TopWrapper = styled.div`
+export const TopWrapper = styled.div`
 	width: 100%;
 	height: 40px;
 	box-sizing: border-box;
 `;
 
-const InputWrapper = styled.div`
+export const InputWrapper = styled.div`
 	float: left;
 	width: calc(100% - 100px);
 `;
 
-const Input = styled.input`
+export const Input = styled.input`
 	width: 100%;
 	height: 40px;
 	font-size: 18px;
@@ -123,14 +128,14 @@ const Cat = styled.div`
 
 const ItemSection = styled.span``;
 
-const AddButton = styled.div`
+export const AddButton = styled.div`
 	width: 100px;
 	height: 40px;
 	background-color: green;
 	cursor: pointer;
 	float: left;
 `;
-const CancelButton = styled(AddButton)`
+export const CancelButton = styled(AddButton)`
 	background-color: red;
 `;
 
