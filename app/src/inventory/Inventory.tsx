@@ -56,7 +56,7 @@ const Inventory = () => {
 		const defaultInventoryItems =
 			ctx.character.inventory && itemCategories.map((c) => ctx.character.inventory[c] && ctx.character.inventory[c]);
 		setSortedInventoryItems(defaultInventoryItems);
-	}, [ctx.character.inventory?.gear, ctx.character.inventory?.weapons, ctx.character.inventory?.armor]);
+	}, [ctx.character.inventory?.gear, ctx.character.inventory?.weapons, ctx.character.inventory?.armor, adding]);
 
 	React.useEffect(() => {
 		// do nothing for now
