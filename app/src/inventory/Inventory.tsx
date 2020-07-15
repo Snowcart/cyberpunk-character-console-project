@@ -65,7 +65,7 @@ const Inventory = () => {
 	const InventoryItems = sortedInventoryItems?.map((c) => {
 		return c?.length > 0 ? (
 			<>
-				<Cat>{c[0] && getTypeName(c[0])}</Cat>
+				<CategoryTitle>{c[0] && getTypeName(c[0])}</CategoryTitle>
 				{(c as any)?.map((s: any) => {
 					return <ItemWrapper>{renderItem(s, getTypeName(s))}</ItemWrapper>;
 				})}
@@ -112,12 +112,12 @@ export const Input = styled.input`
 	border: 1px solid #00ccff;
 `;
 
-const ItemWrapper = styled.div`
+export const ItemWrapper = styled.div`
 	width: 100%;
 	text-align: left;
 `;
 
-const Cat = styled.div`
+export const CategoryTitle = styled.div`
 	width: 100%;
 	background-color: #00ccff;
 	margin-top: 10px;
@@ -126,7 +126,7 @@ const Cat = styled.div`
 	color: #2e2e2e;
 `;
 
-const ItemSection = styled.span``;
+export const ItemSection = styled.span``;
 
 export const AddButton = styled.div`
 	width: 100px;
@@ -184,8 +184,6 @@ const getTypeName = (item: any) => {
 };
 
 const renderItem = (item: any, type: string) => {
-	console.log(item);
-	console.log(type);
 	if (type === 'GEAR')
 		return (
 			<ItemGrid>

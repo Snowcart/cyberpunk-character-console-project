@@ -27,7 +27,7 @@ const Stats = () => {
 				<Stat
 					title={x.title}
 					number={x.value}
-					split={x.calculatedValue ? true : false}
+					split={x.calculatedValue || x.calculatedValue === 0 ? true : false}
 					calculated={x.calculatedValue}
 				/>
 			);
@@ -59,7 +59,8 @@ const StatWrapper = styled.div`
 `;
 
 export const getEmpathy = (character: Character) => {
-	return Math.floor(getHumanity(character) / 10);
+	const emp = Math.floor(getHumanity(character) / 10);
+	return emp < 0 ? 0 : emp;
 };
 
 const getHumanity = (character: Character) => {

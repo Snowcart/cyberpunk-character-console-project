@@ -1,5 +1,5 @@
 import Stats from './stats';
-import Cybernetics from './cybernetics';
+import Cybernetics, { Cybernetic } from './cybernetics';
 import Armor from './armor';
 import Roles from './roles';
 import Weapon from './weapon';
@@ -17,7 +17,7 @@ export default class Character {
 	stats: Stats;
 	wounds: number;
 	inventory: {
-		cybernetics: Cybernetics[];
+		cybernetics: Cybernetic[];
 		armor: Armor[];
 		weapons: Weapon[];
 		gear: GearItem[];

@@ -71,9 +71,9 @@ export default () => {
 					<InventoryWrapper>
 						<Inventory />
 					</InventoryWrapper>
-					<div style={{ border: '1px solid blue', gridArea: '4 / 2 / span 1 / span 1' }}>
+					<CyberneticWrapper>
 						<Cybernetics />
-					</div>
+					</CyberneticWrapper>
 					<SkillsWrapper style={{ border: '1px solid blue', gridArea: '2 / 3 / span 3 / span 1' }}>
 						<Skills />
 					</SkillsWrapper>
@@ -88,6 +88,15 @@ const StatsWrapper = styled.div`
 	border: 2px solid #00ffff;
 	gridarea: 2 / 1 / span 1 / span 1;
 	overflow-y: scroll;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+`;
+
+const CyberneticWrapper = styled.div`
+	overflow-y: scroll;
+	border: 1px solid blue;
+	gridarea: 4 / 2 / span 1 / span 1;
 	&::-webkit-scrollbar {
 		display: none;
 	}
