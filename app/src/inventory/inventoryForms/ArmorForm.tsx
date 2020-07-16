@@ -82,7 +82,7 @@ const ArmorForm = (props: FormProps) => {
 		if (
 			armorItem.name &&
 			armorItem.stoppingPower &&
-			armorItem.encumberanceValue &&
+			(armorItem.encumberanceValue || armorItem.encumberanceValue === 0) &&
 			(armorItem.head || armorItem.torso || armorItem.arms || armorItem.legs)
 		)
 			return true;
