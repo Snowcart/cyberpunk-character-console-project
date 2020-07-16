@@ -21,6 +21,15 @@ export const Cybernetics = () => {
 		setAdding(!adding);
 	};
 
+	const cyberneticLegend = (
+		<CyberneticLegend>
+			<span>Name</span>
+			<span>ID</span>
+			<span>Description</span>
+			<span>HL</span>
+		</CyberneticLegend>
+	);
+
 	const cyberTypes = [
 		'Fashionware',
 		'Neuroware',
@@ -44,27 +53,32 @@ export const Cybernetics = () => {
 		setSortedCybernetics(defaultCybernetics);
 	}, [ctx.character?.inventory?.cybernetics, adding]);
 
-	const cyberneticsInInventory = sortedCybernetics?.map((sortedCybernetic) => {
-		return (
-			sortedCybernetic?.length > 0 && (
-				<>
-					<CategoryTitle>{sortedCybernetic[0] && sortedCybernetic[0].type}</CategoryTitle>
-					{sortedCybernetic.map((c) => {
-						return (
-							<ItemWrapper>
-								<CyberneticGrid>
-									<ItemSection>{c.name}</ItemSection>
-									<ItemSection>{c.idCode}</ItemSection>
-									<ItemSection>{c.description}</ItemSection>
-									<ItemSection>{c.humanityLoss}</ItemSection>
-								</CyberneticGrid>
-							</ItemWrapper>
-						);
-					})}
-				</>
-			)
-		);
-	});
+	const cyberneticsInInventory = (
+		<>
+			{cyberneticLegend}
+			{sortedCybernetics?.map((sortedCybernetic) => {
+				return (
+					sortedCybernetic?.length > 0 && (
+						<>
+							<CategoryTitle>{sortedCybernetic[0] && sortedCybernetic[0].type}</CategoryTitle>
+							{sortedCybernetic.map((c) => {
+								return (
+									<ItemWrapper>
+										<CyberneticGrid>
+											<ItemSection>{c.name}</ItemSection>
+											<ItemSection>{c.idCode}</ItemSection>
+											<ItemSection>{c.description}</ItemSection>
+											<ItemSection>{c.humanityLoss}</ItemSection>
+										</CyberneticGrid>
+									</ItemWrapper>
+								);
+							})}
+						</>
+					)
+				);
+			})}
+		</>
+	);
 
 	return (
 		<>
@@ -91,4 +105,8 @@ const CyberneticGrid = styled.div`
 	span {
 		border: 1px solid green;
 	}
+`;
+
+const CyberneticLegend = styled(CyberneticGrid)`
+	margin-bottom: 18px;
 `;
