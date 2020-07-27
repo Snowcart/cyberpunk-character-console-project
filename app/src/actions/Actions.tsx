@@ -2,6 +2,7 @@ import { characterContext } from '../context/CharacterContext';
 import * as React from 'react';
 import styled from 'styled-components';
 import Stat from '../stats/Stat';
+import Weapon from '../models/weapon';
 
 const Actions = () => {
 	const ctx = React.useContext(characterContext);
@@ -18,6 +19,21 @@ const Actions = () => {
 				{ title: 'LIFT', value: actionStatValues.lift }
 		  ]
 		: null;
+
+	const getTotal = (weapon: Weapon) => {
+		const getStat = () => {
+			if (weapon.type === 'Rifle' || weapon.type === 'Shotgun')
+				return ctx.character?.skills?.find((x) => x.name === 'Rifle').points;
+			if (weapon.type === 'Pistol') return ctx.character?.skills?.find((x) => x.name === 'Handgun')?.points;
+			if (weapon.type === 'SMG') return ctx.character?.skills?.find((x) => x.name === 'Submachinegun')?.points;
+			if (weapon.type === 'Heavy') return ctx.character?.skills?.find((x) => x.name === 'Heavy Weapons')?.points;
+			if (weapon.type === 'Melee') return ctx.character?.skills?.find((x) => x.name === 'Melee')?.points;
+		};
+		const points = getStat();
+		const stat = ctx.character?.stats?.reflex;
+		const bonus = weapon.isSmartgun ? 1 : 0;
+		return points + stat + bonus + weapon.accuracy;
+	};
 
 	const actionStats = statArray ? (
 		<>
@@ -44,6 +60,7 @@ const Actions = () => {
 						<div>{w.ROF}</div>
 						<div>{w.reliablility}</div>
 						<div>{w.range + 'm'}</div>
+						<div>{getTotal(w)}</div>
 					</WeaponGrid>
 				);
 			})}
@@ -63,7 +80,7 @@ const WeaponGrid = styled.div`
 	width: 100%;
 	display: grid;
 	margin-bottom: 15px;
-	grid-template-columns: 25% 13% 12% 8% 10% 8% 8% 8% 8%;
+	grid-template-columns: 23% 13% 8% 8% 8% 8% 8% 8% 8% 8%;
 	div {
 		box-sizing: border-box;
 		border: 1px solid green;
@@ -89,6 +106,7 @@ const WeaponsLegend = (
 		<div>ROF</div>
 		<div>REL.</div>
 		<div>RANGE</div>
+		<div>TOTAL</div>
 	</WeaponLegend>
 );
 

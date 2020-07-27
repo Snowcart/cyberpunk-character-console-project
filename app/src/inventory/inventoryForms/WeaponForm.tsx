@@ -93,12 +93,12 @@ const WeaponForm = (props: FormProps) => {
 			weaponItem.name &&
 			weaponItem.type &&
 			weaponItem.damage &&
-			weaponItem.range &&
-			weaponItem.ROF &&
-			weaponItem.shots &&
-			weaponItem.clip &&
+			weaponItem.range !== null &&
+			weaponItem.ROF !== null &&
+			weaponItem.shots !== null &&
+			weaponItem.clip !== null &&
 			weaponItem.concealability &&
-			weaponItem.accuracy &&
+			weaponItem.accuracy !== null &&
 			weaponItem.reliablility
 		)
 			return true;
