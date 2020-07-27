@@ -31,7 +31,7 @@ const Actions = () => {
 		};
 		const points = getStat();
 		const stat = ctx.character?.stats?.reflex;
-		const bonus = weapon.isSmartgun ? 1 : 0;
+		const bonus = weapon.isSmartgun ? 2 : 0;
 		return points + stat + bonus + weapon.accuracy;
 	};
 

@@ -16,7 +16,7 @@ const Saves = () => {
 	const Save = (
 		<SaveWrapper>
 			<SaveTitle>SAVE</SaveTitle>
-			<SaveText>{char.stats?.body && char.getSave()}</SaveText>
+			<SaveText>{char.stats?.body && getSave(characterCtx.character)}</SaveText>
 		</SaveWrapper>
 	);
 
@@ -71,3 +71,8 @@ const SaveText = styled.div`
 	margin-top: 40%;
 `;
 const BtmWrapper = styled(SaveWrapper)``;
+
+const getCurrentWoundType = (character: Character) => Math.ceil(character.wounds / 4) - 1;
+const getSave = (character: Character) =>
+	character.wounds === 0 ? character.stats.body : character.stats.body - getCurrentWoundType(character);
+const getDeathSave = (character: Character) => character.stats.body - Math.max(getCurrentWoundType(character) - 3, 0);

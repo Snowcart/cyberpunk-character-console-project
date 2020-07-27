@@ -34,13 +34,6 @@ export default class Character {
 		if (body == 10) return -4;
 		if (body >= 11) return -5;
 	};
-	//getHumanity = () => this.stats.empathy * 10 - this.inventory.cybernetics.reduce((s, c) => (s += c.humanityLoss), 0);
-	//getEmpathy = () => Math.floor(this.getHumanity() / 10);
-
-	// move these out
-	getCurrentWoundType = () => Math.ceil(this.wounds / 4);
-	getSave = () => this.stats.body - this.getCurrentWoundType();
-	getDeathSave = () => this.stats.body - Math.max(this.getCurrentWoundType() - 3, 0);
 
 	// Todo: figure out custom languages or expert x or martial arts
 	// Todo: figure out complete custom skill
