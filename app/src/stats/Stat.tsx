@@ -23,7 +23,15 @@ const Stat = (props: Props) => {
 	return (
 		<StatSection key={props.title}>
 			<h3>
-				{props.title} [ {!props.split ? editableNumber : `${editableNumber} / ${props.calculated}`} ]
+				{props.title} [{' '}
+				{!props.split ? (
+					editableNumber
+				) : (
+					<>
+						{editableNumber} / {props.calculated}
+					</>
+				)}{' '}
+				]
 			</h3>
 		</StatSection>
 	);
