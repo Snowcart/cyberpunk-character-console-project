@@ -67,8 +67,6 @@ export default Title;
 const TitleBar = styled.div`
 	width: 100%;
 	height: 60px;
-	border-bottom: 2px solid #00ccff;
-	box-shadow: 2px 2px #00ffff;
 `;
 
 const Button = styled.button`
@@ -77,8 +75,6 @@ const Button = styled.button`
 `;
 
 const Heading = styled.h1`
-	color: #00ccff;
-	text-shadow: 2px 1px #00ffff;
 	float: left;
 	margin-left: 40px;
 	padding-right: 5px;
