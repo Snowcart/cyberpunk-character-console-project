@@ -9,6 +9,6 @@ export const importCharacter = (json: string) => {
 
 export const exportCharacter = (character: Character) => {
 	const json = JSON.stringify(character);
-	const filename = `${character.name} ${new Date().toLocaleString()}`.replace(/[^a-z0-9]+/gi, '_').toLowerCase();
+	const filename = character.name.replace(/[^a-z0-9]+/gi, '_').toLowerCase();
 	fileDownload(json, `${filename}.json`);
 };
