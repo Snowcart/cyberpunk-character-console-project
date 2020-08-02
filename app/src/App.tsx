@@ -79,7 +79,7 @@ const NeonBoxStyle = css`
 	margin: -1px;
 	padding: 4px;
 	border: 1px solid #9fd2ff;
-	box-shadow: 0 0 1px #fff, inset 0 0 1px #fff, 0 0 5px #08f, inset 0 0 5px #08f, 0 0 8px #08f, inset 0 0 8px #08f;
+	box-shadow: 0 0 1px #9fd2ff, inset 0 0 1px #9fd2ff, 0 0 5px #08f, inset 0 0 5px #08f, 0 0 8px #08f, inset 0 0 8px #08f;
 `;
 
 const NeonBox = styled.div`

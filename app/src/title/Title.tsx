@@ -93,6 +93,7 @@ const BoldHeading = styled(Heading)`
 `;
 
 const Input = styled.input`
+	float: left;
 	width: auto;
 	max-width: 25%;
 	font-size: 42px;
