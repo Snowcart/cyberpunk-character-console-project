@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Stat from '../stats/Stat';
 import Weapon from '../models/weapon';
-
+ 
 const Actions = () => {
 	const ctx = React.useContext(characterContext);
 	const weapons = ctx.character?.inventory?.weapons;

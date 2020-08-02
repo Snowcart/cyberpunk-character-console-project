@@ -61,33 +61,37 @@ interface WoundProps {
 	woundNumber: number;
 }
 
-const FilledWound = styled.div`
-	background-color: red;
+const WoundStyle = styled.div`
 	box-sizing: border-box;
-	border-right: 1px solid #00ccff;
+	border: 1px solid #c2ffcf;
 	width: 25%;
 	height: 100%;
 	float: left;
-	&:last-of-type {
-		border-right: 3px solid #00ccff;
-	}
+	box-shadow: inset 0 0 1px #00ff37, inset 0 0 4px #00ff37;
+	margin-right: -1px;
 `;
-const EmptyWound = styled(FilledWound)`
+
+const FilledWound = styled(WoundStyle)`
+	background-color: red;
+	border: 1px solid #ff9f9f;
+	box-shadow: inset 0 0 4px #fff, inset 0 0 8px #fff;
+`;
+
+const EmptyWound = styled(WoundStyle)`
 	background-color: transparent;
 `;
+
 const WoundWrapper = styled.div`
 	position: relative;
-	height: 100%;
+	height: calc(100% - 19px);
 `;
 const WoundSection = styled.div`
 	position: relative;
 	width: 10%;
 	float: left;
-	height: calc(100% - 19px);
+	height: 100%;
 `;
 const WoundTitle = styled.div`
-	border-bottom: 1px solid red;
-	top: 0;
 	height: 19px;
 	text-align: center;
 `;
