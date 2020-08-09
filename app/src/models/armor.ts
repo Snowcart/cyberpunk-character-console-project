@@ -8,5 +8,5 @@ export default interface Armor {
 	torso?: boolean;
 	arms?: boolean;
 	legs?: boolean;
-	equipped: boolean;
+	equipped?: boolean;
 }

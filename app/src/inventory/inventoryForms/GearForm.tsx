@@ -3,13 +3,24 @@ import Form from '../../common/Form';
 import Character, { GearItem } from '../../models/Character';
 import { characterContext } from '../../context/CharacterContext';
 import styled from 'styled-components';
+import Autocomplete from '../../common/Autocomplete';
+import gearCatalogue from '../gearCatalogue';
 
 const GearItemForm = (props: FormProps) => {
 	const [gearItem, setGearItem] = React.useState({} as GearItem);
+	const [search, setSearch] = React.useState('');
 	const ctx = React.useContext(characterContext);
 
 	const gearFormFields = (
 		<>
+			<Autocomplete
+				itemValue="name"
+				items={gearCatalogue}
+				value={search}
+				valueSetter={setSearch}
+				onSelect={setGearItem}
+			/>
+
 			<FormItem>
 				<div>Name: </div>
 				<input type="text" value={gearItem.name} onChange={(e) => setGearItem({ ...gearItem, name: e.target.value })} />

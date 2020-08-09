@@ -5,9 +5,12 @@ import { FormItem, FormProps } from './GearForm';
 import Dropdown from 'react-dropdown';
 import Character from '../../models/Character';
 import Form from '../../common/Form';
+import Autocomplete from '../../common/Autocomplete';
+import armorCatalogue from '../armorCatalogue';
 
 const ArmorForm = (props: FormProps) => {
 	const [armorItem, setArmorItem] = React.useState({} as Armor);
+	const [search, setSearch] = React.useState('');
 	const ctx = React.useContext(characterContext);
 
 	const positions = ['head', 'torso', 'arms', 'legs'];
@@ -39,6 +42,13 @@ const ArmorForm = (props: FormProps) => {
 
 	const armorFormFields = (
 		<>
+			<Autocomplete
+				itemValue="name"
+				items={armorCatalogue}
+				value={search}
+				valueSetter={setSearch}
+				onSelect={setArmorItem}
+			/>
 			<FormItem>
 				<label>Name: </label>
 				<input type="text" value={armorItem.name} onChange={(e) => onChange('name', e.target.value)} />
