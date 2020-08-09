@@ -1,5 +1,5 @@
 export default interface Item {
 	name: string;
-	details: string;
+	details?: string;
 	cost: number;
 }

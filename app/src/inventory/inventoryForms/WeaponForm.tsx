@@ -5,22 +5,34 @@ import Dropdown from 'react-dropdown';
 import Weapon from '../../models/weapon';
 import Character from '../../models/Character';
 import Form from '../../common/Form';
+import weaponsCatalogue from '../weaponCatalogue';
+import Autocomplete from '../../common/Autocomplete';
 
 const WeaponForm = (props: FormProps) => {
 	const [weaponItem, setWeaponItem] = React.useState({} as Weapon);
+	const [search, setSearch] = React.useState('');
 	const ctx = React.useContext(characterContext);
 
-	const onChange = (key: string, value: any) => {
-		const weapon: any = weaponItem; // typescript can go to hell for the sentencing.
-		weapon[key] = value;
+	const onChange = (key: keyof Weapon, value: any) => {
+		const weapon = weaponItem; // typescript can go to hell for the sentencing.
+		(weapon as any)[key] = value;
 		setWeaponItem(weapon);
 	};
 
 	const weaponTypes = ['Pistol', 'SMG', 'Rifle', 'Shotgun', 'Heavy', 'Melee', 'Exotic'];
 	const concealability = ['Jacket', 'Pocket', 'None', 'NA'];
 	const reliability = ['VR', 'SR', 'UR'];
+
 	const weaponFormFields = (
 		<>
+			<Autocomplete
+				itemValue="name"
+				items={weaponsCatalogue}
+				value={search}
+				valueSetter={setSearch}
+				onSelect={setWeaponItem}
+			/>
+
 			<FormItem>
 				<label>Type: </label>
 				<Dropdown options={weaponTypes} value={weaponItem.type} onChange={(e) => onChange('type', e.value)} />
@@ -69,8 +81,8 @@ const WeaponForm = (props: FormProps) => {
 				<label>Reliability: </label>
 				<Dropdown
 					options={reliability}
-					value={weaponItem.reliablility}
-					onChange={(e) => onChange('reliablility', e.value)}
+					value={weaponItem.reliability}
+					onChange={(e) => onChange('reliability', e.value)}
 				/>
 			</FormItem>
 			<FormItem>
@@ -99,7 +111,7 @@ const WeaponForm = (props: FormProps) => {
 			weaponItem.clip !== null &&
 			weaponItem.concealability &&
 			weaponItem.accuracy !== null &&
-			weaponItem.reliablility
+			weaponItem.reliability
 		)
 			return true;
 		return 'Form is not valid.';

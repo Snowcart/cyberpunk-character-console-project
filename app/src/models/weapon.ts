@@ -6,12 +6,14 @@ export default interface Weapon extends Item {
 	range: number;
 	ROF: number;
 	shots: number;
-	clip: number;
+	// TODO: Remove Clip?? I don't think it is used
+	clip?: number;
 	ammo: string;
-	concealability: 'Jacket' | 'Pocket' | 'None' | 'NA';
+	concealability: 'Jacket' | 'Pocket' | 'Long Coat' | 'None' | 'NA';
 	accuracy: number;
-	reliablility: 'VR' | 'ST' | 'UR';
+	reliability: 'VR' | 'ST' | 'UR' | 'NA';
 	armorPeircing?: string; // Todo: string literal of AP types
-	isSmartgun: boolean;
-	equipped: boolean;
+	isSmartgun?: boolean;
+	equipped?: boolean;
+	availability?: string;
 }

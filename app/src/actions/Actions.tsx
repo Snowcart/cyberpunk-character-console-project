@@ -58,7 +58,7 @@ const Actions = () => {
 						<div>{w.damage}</div>
 						<div>{w.shots}</div>
 						<div>{w.ROF}</div>
-						<div>{w.reliablility}</div>
+						<div>{w.reliability}</div>
 						<div>{w.range + 'm'}</div>
 						<div>{getTotal(w)}</div>
 					</WeaponGrid>
