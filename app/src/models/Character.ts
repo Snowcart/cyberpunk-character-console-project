@@ -102,7 +102,8 @@ export default class Character {
 export interface GearItem {
 	name: string;
 	desc: string;
-	count: number;
+	cost: number;
+	count?: number;
 }
 
 const calculateSp = (armors: Armor[]) => {
