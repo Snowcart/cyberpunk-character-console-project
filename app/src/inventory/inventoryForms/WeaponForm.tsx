@@ -27,7 +27,7 @@ const WeaponForm = (props: FormProps) => {
 		<>
 			<Autocomplete
 				itemValue="name"
-				items={weaponsCatalogue}
+				items={weaponsCatalogue.sort()}
 				value={search}
 				valueSetter={setSearch}
 				onSelect={setWeaponItem}

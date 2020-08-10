@@ -44,7 +44,7 @@ const ArmorForm = (props: FormProps) => {
 		<>
 			<Autocomplete
 				itemValue="name"
-				items={armorCatalogue}
+				items={armorCatalogue.sort()}
 				value={search}
 				valueSetter={setSearch}
 				onSelect={setArmorItem}

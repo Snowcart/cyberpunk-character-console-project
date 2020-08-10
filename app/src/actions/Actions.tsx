@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Stat from '../stats/Stat';
 import Weapon from '../models/weapon';
- 
+
 const Actions = () => {
 	const ctx = React.useContext(characterContext);
 	const weapons = ctx.character?.inventory?.weapons;
@@ -51,7 +51,7 @@ const Actions = () => {
 					<WeaponGrid>
 						<div>{w.name}</div>
 						<div>
-							Smartgun: <input type="checkbox" checked={w.isSmartgun ? true : false} onClick={null} />
+							<input type="checkbox" checked={w.isSmartgun ? true : false} onClick={null} />
 						</div>
 						<div>{w.type}</div>
 						<div>{w.accuracy}</div>
@@ -80,7 +80,7 @@ const WeaponGrid = styled.div`
 	width: 100%;
 	display: grid;
 	margin-bottom: 15px;
-	grid-template-columns: 23% 13% 8% 8% 8% 8% 8% 8% 8% 8%;
+	grid-template-columns: 23% 8% 10% 5% 10% 10% 8% 8% 8% 10%;
 	div {
 		box-sizing: border-box;
 		border: 1px solid green;
@@ -98,7 +98,7 @@ const ActionWrapper = styled.div`
 const WeaponsLegend = (
 	<WeaponLegend>
 		<div>NAME</div>
-		<div>SMRTGUN</div>
+		<div>SMRTGN</div>
 		<div>TYPE</div>
 		<div>WA</div>
 		<div>DMG</div>
@@ -106,7 +106,7 @@ const WeaponsLegend = (
 		<div>ROF</div>
 		<div>REL.</div>
 		<div>RANGE</div>
-		<div>TOTAL</div>
+		<div>HIT</div>
 	</WeaponLegend>
 );
 

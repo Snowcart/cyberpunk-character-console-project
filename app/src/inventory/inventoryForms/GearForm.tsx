@@ -15,7 +15,7 @@ const GearItemForm = (props: FormProps) => {
 		<>
 			<Autocomplete
 				itemValue="name"
-				items={gearCatalogue}
+				items={gearCatalogue.sort()}
 				value={search}
 				valueSetter={setSearch}
 				onSelect={setGearItem}

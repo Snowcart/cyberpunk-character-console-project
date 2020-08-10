@@ -1,14 +1,5 @@
-import * as ReactAutocomplete from 'react-autocomplete';
 import * as React from 'react';
-
-interface Props<T> {
-	items: T[];
-	value: string;
-	itemValue: keyof T;
-	valueSetter: (value: string) => void;
-	onSelect: React.Dispatch<React.SetStateAction<T>> | ((selected: T) => void);
-	itemRender?: (item: T, isHighlighted: boolean) => React.ReactNode;
-}
+import * as ReactAutocomplete from 'react-autocomplete';
 
 const Autocomplete = <_, T>(props: Props<T>) => {
 	const { itemValue, valueSetter, onSelect: propOnSelect, itemRender, ...directProps } = props;
@@ -32,3 +23,12 @@ const Autocomplete = <_, T>(props: Props<T>) => {
 };
 
 export default Autocomplete;
+
+interface Props<T> {
+	items: T[];
+	value: string;
+	itemValue: keyof T;
+	valueSetter: (value: string) => void;
+	onSelect: React.Dispatch<React.SetStateAction<T>> | ((selected: T) => void);
+	itemRender?: (item: T, isHighlighted: boolean) => React.ReactNode;
+}
