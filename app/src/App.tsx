@@ -22,9 +22,10 @@ export default () => {
 	}
 
 	body {
-		font-family: 'Source Code Pro', monospace;
+		font-family: 'VT323', monospace;
 		height: 100%;
 		margin: 0;
+		color: #00616e;
 	}
 
 	body, input {

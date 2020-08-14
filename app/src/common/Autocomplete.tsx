@@ -1,5 +1,5 @@
-import * as React from 'react';
 import * as ReactAutocomplete from 'react-autocomplete';
+import * as React from 'react';
 
 const Autocomplete = <_, T>(props: Props<T>) => {
 	const { itemValue, valueSetter, onSelect: propOnSelect, itemRender, ...directProps } = props;
